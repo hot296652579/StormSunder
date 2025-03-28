@@ -1,0 +1,23 @@
+{
+  "__version__": "1.0.0",
+  "config": {
+    "images": [
+      {
+        "path": "E:\\工作资料\\ui\\1_GameUI\\倒水游戏\\美术\\Texture\\效果图\\ZhuYeMian.png",
+        "x": 0,
+        "y": 170.7,
+        "sx": 0.7,
+        "sy": 0.7,
+        "opacity": 50
+      }
+    ],
+    "sceneUUID": {
+      "be14c61f-22d8-4bb9-b444-ad9f29740469": {
+        "path": "E:\\工作资料\\ui\\1_GameUI\\倒水游戏\\美术\\Texture\\效果图\\ZhuYeMian.png"
+      }
+    },
+    "scene": "be14c61f-22d8-4bb9-b444-ad9f29740469"
+  },
+  "show": false,
+  "root-path": "E:\\工作资料\\ui\\1_GameUI\\倒水游戏\\美术\\Texture\\效果图"
+}

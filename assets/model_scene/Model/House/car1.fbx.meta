@@ -1,0 +1,79 @@
+{
+  "ver": "2.3.12",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "ec3b2584-4447-48a9-8bf9-e8c3196884a4",
+  "files": [],
+  "subMetas": {
+    "81124": {
+      "importer": "gltf-mesh",
+      "uuid": "ec3b2584-4447-48a9-8bf9-e8c3196884a4@81124",
+      "displayName": "",
+      "id": "81124",
+      "name": "立方体.007.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 284
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "701d1": {
+      "importer": "gltf-scene",
+      "uuid": "ec3b2584-4447-48a9-8bf9-e8c3196884a4@701d1",
+      "displayName": "",
+      "id": "701d1",
+      "name": "car1.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "redirect": "ec3b2584-4447-48a9-8bf9-e8c3196884a4@701d1",
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "ec3b2584-4447-48a9-8bf9-e8c3196884a4@81124"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [],
+      "scenes": [
+        "ec3b2584-4447-48a9-8bf9-e8c3196884a4@701d1"
+      ]
+    }
+  }
+}

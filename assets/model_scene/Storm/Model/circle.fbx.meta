@@ -1,0 +1,79 @@
+{
+  "ver": "2.3.12",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "be0de521-1ecc-4625-805c-e425df292ee7",
+  "files": [],
+  "subMetas": {
+    "141fe": {
+      "importer": "gltf-mesh",
+      "uuid": "be0de521-1ecc-4625-805c-e425df292ee7@141fe",
+      "displayName": "",
+      "id": "141fe",
+      "name": "circle.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 18
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "8c110": {
+      "importer": "gltf-scene",
+      "uuid": "be0de521-1ecc-4625-805c-e425df292ee7@8c110",
+      "displayName": "",
+      "id": "8c110",
+      "name": "circle.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "redirect": "be0de521-1ecc-4625-805c-e425df292ee7@8c110",
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "be0de521-1ecc-4625-805c-e425df292ee7@141fe"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [],
+      "scenes": [
+        "be0de521-1ecc-4625-805c-e425df292ee7@8c110"
+      ]
+    }
+  }
+}

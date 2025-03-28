@@ -1,0 +1,148 @@
+{
+  "__version__": "1.3.7",
+  "log": {
+    "level": 4
+  },
+  "common": {
+    "polyfills": {
+      "asyncFunctions": true
+    },
+    "buildPath": "project://build",
+    "outputName": "web-mobile",
+    "mainBundleCompressionType": "merge_dep",
+    "platform": "web-mobile",
+    "name": "RescueTheCar"
+  },
+  "BuildTaskManager": {
+    "taskMap": {
+      "1731478842683": {
+        "type": "build",
+        "id": "1731478842683",
+        "progress": 1,
+        "state": "success",
+        "stage": "build",
+        "message": "2024-11-13 14:27:21 build success in 9 s!",
+        "options": {
+          "name": "OpenTGX-全栈游戏开发",
+          "server": "",
+          "platform": "web-desktop",
+          "buildPath": "project://build",
+          "debug": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": false,
+          "overwriteProjectSettings": {
+            "includeModules": {
+              "gfx-webgl2": "on",
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting"
+            },
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            }
+          },
+          "nativeCodeBundleMode": "both",
+          "polyfills": {
+            "asyncFunctions": true
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "9e293cde-e27b-4902-808b-e884f3e9da32",
+          "outputName": "web-desktop",
+          "taskName": "web-desktop",
+          "scenes": [
+            {
+              "url": "db://assets/module_demo_rooster/rooster_jump.scene",
+              "uuid": "0d6c75ac-8171-4aaa-a146-3d530a2632f9",
+              "bundle": "db://assets/module_demo_rooster"
+            },
+            {
+              "url": "db://assets/module_demo_tank/tank_game.scene",
+              "uuid": "84e1b2b3-64eb-4ecc-ac3d-3c0a664da5d0",
+              "bundle": "db://assets/module_demo_tank"
+            },
+            {
+              "url": "db://assets/start/start.scene",
+              "uuid": "9e293cde-e27b-4902-808b-e884f3e9da32"
+            },
+            {
+              "url": "db://assets/module_basic/scene_mainmenu/main_menu.scene",
+              "uuid": "91ed68df-3121-458e-a411-fdb37892fda6",
+              "bundle": "db://assets/module_basic"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "packages": {},
+          "__version__": "1.3.8",
+          "buildMode": "normal",
+          "logDest": "project://temp/builder/log/web-desktop2024-11-13 14-20.log"
+        },
+        "time": "2024-11-13 14:27:12",
+        "dirty": false
+      },
+      "1739847237531": {
+        "type": "build",
+        "id": "1739847237531",
+        "progress": 1,
+        "state": "success",
+        "stage": "run",
+        "message": "2025-3-7 16:29:31 run package E:\\CocosCreator\\_TakeGoblet\\build\\web-mobile success!",
+        "options": {
+          "name": "RescueTheCar",
+          "server": "",
+          "platform": "web-mobile",
+          "buildPath": "project://build",
+          "debug": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": false,
+          "polyfills": {
+            "asyncFunctions": true
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "useBuiltinServer": false,
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "9e293cde-e27b-4902-808b-e884f3e9da32",
+          "outputName": "web-mobile",
+          "taskName": "web-mobile",
+          "scenes": [
+            {
+              "url": "db://assets/module_take_goblet/rooster_takegoblet.scene",
+              "uuid": "be14c61f-22d8-4bb9-b444-ad9f29740469",
+              "bundle": "db://assets/module_take_goblet"
+            },
+            {
+              "url": "db://assets/start/start.scene",
+              "uuid": "9e293cde-e27b-4902-808b-e884f3e9da32"
+            }
+          ],
+          "packages": {},
+          "__version__": "1.3.7",
+          "buildMode": "normal",
+          "logDest": "project://temp/builder/log/web-mobile2025-2-18 10-53.log"
+        },
+        "time": "2025-3-7 16:28:09",
+        "dirty": false
+      }
+    }
+  }
+}
