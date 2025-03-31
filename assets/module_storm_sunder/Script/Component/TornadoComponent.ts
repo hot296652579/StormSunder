@@ -1,4 +1,4 @@
-import { BoxCollider, Button, Collider, Component, ConeCollider, CylinderCollider, ITriggerEvent, Label, Node, NodeEventType, RigidBody, SphereCollider, Vec3, _decorator, find, game } from 'cc';
+import { BoxCollider, Button, Collider, Component, ConeCollider, CylinderCollider, ITriggerEvent, Label, Node, NodeEventType, RigidBody, SphereCollider, Vec3, _decorator, director, find, game } from 'cc';
 import { StormSunderAudioMgr } from '../Manager/StormSunderAudioMgr';
 import { EventDispatcher } from 'db://assets/core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from '../Enum/GameEvent';
@@ -9,6 +9,7 @@ import { PlayerInfo } from './PlayerInfoComponent';
 import { Effect2DUIMgr } from '../Manager/Effect2DUIMgr';
 import { AttributeBonusMgr } from '../Manager/AttributeBonusMgr';
 import { TornadoAIComponent } from './TornadoAIComponent';
+import { EasyControllerEvent } from 'db://assets/core_tgx/easy_controller/EasyController';
 const { ccclass, property } = _decorator;
 
 const rotateSpeed = 500;
@@ -41,12 +42,9 @@ export class TornadoComponent extends Component {
     isColliding: boolean = false;
     //当前攻击的道具或玩家
     curHitObj: Node = null;
-
     _attackInterval: number = 0.5; // 攻击间隔
     _lastAttackTime: Map<string, number> = new Map(); // 记录上次攻击时间
-
     attributeBonusMgr: AttributeBonusMgr = null;
-
 
     protected start(): void {
         this.initPlayer();
@@ -62,9 +60,6 @@ export class TornadoComponent extends Component {
         this.rigidBody = this.tornado.getComponent(RigidBody)!;
         this.tigger = this.tornado.getComponent(Collider)!;
         this.radiusTigger = this.node.getChildByName('radiusTigger').getComponent(Collider)!;
-
-        const points = this.node.getChildByName('points')!;
-        this.points = points.children.map((child) => child);
 
         this.tigger.on('onTriggerEnter', this.onTriggerEnter, this);
         this.tigger.on('onTriggerStay', this.onTriggerStay, this);
@@ -90,6 +85,9 @@ export class TornadoComponent extends Component {
             nickName: this.nickName,
             level: this.currentLv,
         }
+
+        this.node.setScale(1, 1, 1);
+        this.updateCameraView();
     }
 
     protected registerEvent() {
@@ -158,6 +156,7 @@ export class TornadoComponent extends Component {
 
         const otherCollider = event.otherCollider;
 
+        //攻击道具
         if (otherCollider.getGroup() == 1 << 4) {
             this.curHitObj = otherCollider.node;
 
@@ -178,27 +177,35 @@ export class TornadoComponent extends Component {
 
                 // 检查道具是否被摧毁
                 if (propComponent.currentHp <= 0) {
-                    // 随机选择一个吸收点
-                    const randomPoint = this.points[Math.floor(Math.random() * this.points.length)];
-                    if (randomPoint) {
-                        otherCollider.node.parent = randomPoint;
-                        otherCollider.node.setPosition(Vec3.ZERO);
-                        propComponent.swallow();
-                        this.addExpByKill();
-                    }
+                    // 在龙卷风附近随机位置创建吸收点
+                    const randomOffset = new Vec3(
+                        (Math.random() - 0.5) * 1, // -1 到 1 之间的随机值
+                        0,
+                        (Math.random() - 0.5) * 1
+                    );
+
+                    // 保存道具原始缩放
+                    const originalScale = otherCollider.node.scale.clone();
+
+                    // 将道具添加到龙卷风节点下
+                    otherCollider.node.parent = this.node;
+                    otherCollider.node.setPosition(randomOffset);
+
+                    // 计算抵消父节点scale的缩放值
+                    const parentScale = this.node.scale;
+                    const compensateScale = new Vec3(
+                        originalScale.x / parentScale.x,
+                        originalScale.y / parentScale.y,
+                        originalScale.z / parentScale.z
+                    );
+                    otherCollider.node.setScale(compensateScale);
+
+                    propComponent.swallow(this.node);
+                    this.addExpByKill();
                 }
             }
         }
-        // else if (otherCollider.getGroup() == 1 << 3) {
-        //     const targetTornado = otherCollider.node.parent.getComponent(TornadoComponent);
-        //     if (!targetTornado) return;
 
-        //     if (this.currentLv > targetTornado.currentLv) {
-        //         this.curHitObj = targetTornado.node;
-        //         this.addExpByKill();
-        //         this.killed(targetTornado.node);
-        //     }
-        // }
     }
 
     //被击杀
@@ -252,9 +259,8 @@ export class TornadoComponent extends Component {
         if (!this.curHitObj) return;
 
         const propComp = this.curHitObj.getComponent(PropComponent);
-
         let objExp = 0;
-        if (this.curHitObj.getComponent(PropComponent)) {
+        if (propComp) {
             objExp = propComp.currentExp;
         } else {
             const lv = this.curHitObj.getComponent(TornadoComponent).currentLv;
@@ -271,6 +277,7 @@ export class TornadoComponent extends Component {
             this.currentLv++;
             this.playerInfo.level = this.currentLv;
             this.stormLevelUp();
+            this.grow();
             Effect2DUIMgr.inst.updatePlayerInfo(this.node, this.playerInfo);
         }
 
@@ -288,6 +295,24 @@ export class TornadoComponent extends Component {
         this.speed = attributeBonusMgr.getStormSunderSpeed(this.currentLv);
         this.speed = Math.round((this.speed / 2) * 100) / 100;
         this.currentExp = 0;
+    }
+
+    //变大体积
+    private grow() {
+        //体积=基础体积×（1+等级×百分比）
+        const baseSize = 1;
+        const growMultiple = AttributeBonusMgr.inst.userModel.game_lv_modleVolume_up; //升级体积 百分比系数
+        const percentage = growMultiple / 100;
+        const growSize = baseSize + (1 + this.currentLv * percentage);
+        this.node.setScale(growSize, growSize, growSize);
+        // console.log('growSize:', growSize);
+        this.updateCameraView();
+    }
+
+    private updateCameraView() {
+        const sence = director.getScene();
+        const view = 50 + this.currentLv * 2;
+        sence.emit(EasyControllerEvent.CAMERA_ZOOM, view);
     }
 
     private changeStatus(status: PlayerStatus) {

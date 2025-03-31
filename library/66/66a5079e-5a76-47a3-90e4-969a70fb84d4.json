@@ -1,0 +1,87 @@
+{
+  "__type__": "cc.JsonAsset",
+  "_name": "item_config",
+  "_objFlags": 0,
+  "__editorExtras__": {},
+  "_native": "",
+  "json": {
+    "1": {
+      "name": "羊",
+      "model": "yang",
+      "move": 1,
+      "speed": 10,
+      "move_judge": 50,
+      "time": [
+        2,
+        10
+      ],
+      "regeneration": 1,
+      "number_basic": 20,
+      "regeneration_time": [
+        10,
+        20
+      ],
+      "regeneration_number": [
+        20,
+        30
+      ],
+      "limit": 100,
+      "hp": 2,
+      "exp": 2
+    },
+    "2": {
+      "name": "牛",
+      "model": "niu",
+      "move": 1,
+      "speed": 10,
+      "move_judge": 50,
+      "time": [
+        2,
+        10
+      ],
+      "regeneration": 1,
+      "number_basic": 20,
+      "regeneration_time": [
+        10,
+        20
+      ],
+      "regeneration_number": [
+        20,
+        30
+      ],
+      "limit": 100,
+      "hp": 4,
+      "exp": 4
+    },
+    "3": {
+      "name": "建筑1",
+      "model": "jianzhu_1",
+      "move": 0,
+      "speed": 0,
+      "move_judge": 0,
+      "time": [],
+      "regeneration": 0,
+      "number_basic": 0,
+      "regeneration_time": [],
+      "regeneration_number": [],
+      "limit": 0,
+      "hp": 10,
+      "exp": 10
+    },
+    "4": {
+      "name": "建筑2",
+      "model": "jianzhu_2",
+      "move": 0,
+      "speed": 0,
+      "move_judge": 0,
+      "time": [],
+      "regeneration": 0,
+      "number_basic": 0,
+      "regeneration_time": [],
+      "regeneration_number": [],
+      "limit": 0,
+      "hp": 20,
+      "exp": 20
+    }
+  }
+}

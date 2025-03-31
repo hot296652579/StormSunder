@@ -5,6 +5,8 @@ import { GameUtil } from '../GameUtil';
 import { PropMgr } from '../Manager/PropMgr';
 import { GameMgr, GameStatus } from '../Manager/GameMgr';
 import { PlayerMgr } from '../Manager/PlayerMgr';
+import { tgxUIMgr } from 'db://assets/core_tgx/tgx';
+import { UI_BattleRevive } from 'db://assets/scripts/UIDef';
 
 const { ccclass, property } = _decorator;
 
@@ -48,7 +50,7 @@ export class TornadoAIComponent extends TornadoComponent {
         const { text, range, move_judge, move_time, escape_time, pursuit_1, pursuit_2, pursuit_time } = aiConfig.data;
         this.playerInfo.nickName = text;
         this.nickName = text;
-        this.currentLv = 1;
+        this.currentLv = 11;
         this.playerInfo.level = this.currentLv;
 
         this.moveDuration = Math.floor(move_time[0] + Math.random() * (move_time[1] - move_time[0] + 1));
@@ -56,6 +58,9 @@ export class TornadoAIComponent extends TornadoComponent {
         this.chaseDuration = Math.floor(pursuit_time[0] + Math.random() * (pursuit_time[1] - pursuit_time[0] + 1));
         this.chaseAIProbability = pursuit_1;
         this.chasePlayerProbability = pursuit_2;
+
+        //test 
+        this.chasePlayerProbability = 100;
         this.moveProbability = move_judge;
 
         this.nextExp = this.attributeBonusMgr.getExpNeed(this.currentLv + 1);
@@ -136,7 +141,7 @@ export class TornadoAIComponent extends TornadoComponent {
             const isPlayer = targetTornado instanceof TornadoComponent;
             if (this.currentLv > targetTornado.currentLv && isPlayer) {
                 GameMgr.inst.isWin = false;
-                GameMgr.inst.setGameStatus(GameStatus.End);
+                GameMgr.inst.setGameStatus(GameStatus.Revive);
             }
         }
     }

@@ -1,0 +1,131 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 204,
+      "max": [
+        0.5177168846130371,
+        0.060418661683797836,
+        0.27557092905044556
+      ],
+      "min": [
+        -0.5150064826011658,
+        -0.06112058088183403,
+        -0.314647376537323
+      ],
+      "name": "steak/POSITION",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 12,
+      "componentType": 5126,
+      "count": 204,
+      "name": "steak/NORMAL",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 24,
+      "componentType": 5126,
+      "count": 204,
+      "name": "steak/TEXCOORD_0",
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5123,
+      "count": 540,
+      "name": "steak/INDICES",
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "copyright": "Copyright (c) 2018-2020 Chukong Technologies Inc.",
+    "generator": "FBX-glTF-conv",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 6528,
+      "byteStride": 32,
+      "name": "steak",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1080,
+      "byteOffset": 6528,
+      "target": 34963
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 7608,
+      "uri": "out.bin"
+    }
+  ],
+  "extras": {
+    "FBX-glTF-conv": {
+      "animationFrameRate": 24.0,
+      "fbxFileHeaderInfo": {
+        "creationTimeStamp": {
+          "day": 14,
+          "hour": 11,
+          "millisecond": 44,
+          "minute": 42,
+          "month": 11,
+          "second": 34,
+          "year": 2024
+        },
+        "creator": "Blender (stable FBX IO) - 4.0.1 - 5.8.12",
+        "sceneInfo": {
+          "author": "",
+          "comment": "",
+          "keywords": "",
+          "original": {
+            "applicationName": "Blender (stable FBX IO)",
+            "applicationVendor": "Blender Foundation",
+            "applicationVersion": "4.0.1",
+            "fileName": "/foobar.fbx"
+          },
+          "revision": "",
+          "subject": "",
+          "title": "",
+          "url": "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Food\\steak.fbx"
+        }
+      }
+    }
+  },
+  "meshes": [
+    {
+      "name": "steak",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "steak"
+    }
+  ],
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}

@@ -191,5 +191,23 @@ export class PropMgr {
         }
         return this.tornadoNode;
     }
+
+    //重置
+    reset() {
+        const propsUI = StormSunderGlobalInstance.instance.props!;
+        if (propsUI) {
+            if (propsUI.children.length > 0) {
+                for (let i = 0; i < propsUI.children.length; i++) {
+                    const prop = propsUI.children[i];
+                    if (prop) {
+                        prop.destroy();
+                    }
+                }
+            }
+        }
+
+        this.curMovePropsCount = 0;
+        this.tornadoNode = null;
+    }
 }
 

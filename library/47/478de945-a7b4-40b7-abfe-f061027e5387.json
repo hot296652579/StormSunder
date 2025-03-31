@@ -1,0 +1,51 @@
+{
+  "__type__": "cc.JsonAsset",
+  "_name": "music_config",
+  "_objFlags": 0,
+  "__editorExtras__": {},
+  "_native": "",
+  "json": {
+    "1": {
+      "name": "bgm",
+      "type": 1,
+      "cd": 0,
+      "content": "背景音乐，只在游戏中播放"
+    },
+    "2": {
+      "name": "dianji",
+      "type": 2,
+      "cd": 0,
+      "content": "UI按钮点击音效"
+    },
+    "3": {
+      "name": "shengji",
+      "type": 2,
+      "cd": 0,
+      "content": "升级音效"
+    },
+    "4": {
+      "name": "pohuai",
+      "type": 2,
+      "cd": 0,
+      "content": "摧毁物品音效"
+    },
+    "5": {
+      "name": "xishou",
+      "type": 2,
+      "cd": 0,
+      "content": "吸收龙卷风音效"
+    },
+    "6": {
+      "name": "shengli",
+      "type": 2,
+      "cd": 0,
+      "content": "胜利音效"
+    },
+    "7": {
+      "name": "shibai",
+      "type": 2,
+      "cd": 0,
+      "content": "失败音效"
+    }
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 107,
+      "max": [
+        0.21016357839107513,
+        0.9268776774406433,
+        0.16130416095256805
+      ],
+      "min": [
+        -0.22609835863113403,
+        -0.09937506914138794,
+        -0.16137905418872833
+      ],
+      "name": "stick/POSITION",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 12,
+      "componentType": 5126,
+      "count": 107,
+      "name": "stick/NORMAL",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 24,
+      "componentType": 5126,
+      "count": 107,
+      "name": "stick/TEXCOORD_0",
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5123,
+      "count": 372,
+      "name": "stick/INDICES",
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "copyright": "Copyright (c) 2018-2020 Chukong Technologies Inc.",
+    "generator": "FBX-glTF-conv",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 3424,
+      "byteStride": 32,
+      "name": "stick",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 744,
+      "byteOffset": 3424,
+      "target": 34963
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 4168,
+      "uri": "out.bin"
+    }
+  ],
+  "extras": {
+    "FBX-glTF-conv": {
+      "animationFrameRate": 24.0,
+      "fbxFileHeaderInfo": {
+        "creationTimeStamp": {
+          "day": 14,
+          "hour": 11,
+          "millisecond": 455,
+          "minute": 42,
+          "month": 11,
+          "second": 14,
+          "year": 2024
+        },
+        "creator": "Blender (stable FBX IO) - 4.0.1 - 5.8.12",
+        "sceneInfo": {
+          "author": "",
+          "comment": "",
+          "keywords": "",
+          "original": {
+            "applicationName": "Blender (stable FBX IO)",
+            "applicationVendor": "Blender Foundation",
+            "applicationVersion": "4.0.1",
+            "fileName": "/foobar.fbx"
+          },
+          "revision": "",
+          "subject": "",
+          "title": "",
+          "url": "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Food\\stick.fbx"
+        }
+      }
+    }
+  },
+  "meshes": [
+    {
+      "name": "stick",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "stick"
+    }
+  ],
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}

@@ -4,8 +4,10 @@ import { tgxUIMgr } from "db://assets/core_tgx/tgx";
 import { StormSunderGlobalInstance } from "../StormSunderGlobalInstance";
 import { PropMgr } from "./PropMgr";
 import { TimerMgr } from "./TimerMgr";
-import { UI_BattleResult } from "db://assets/scripts/UIDef";
+import { UI_BattleResult, UI_BattleRevive } from "db://assets/scripts/UIDef";
 import { PlayerMgr } from "./PlayerMgr";
+import { assetManager, instantiate, Prefab } from "cc";
+import { resLoader } from "db://assets/core_tgx/base/ResLoader";
 
 export class GameMgr {
     private static _instance: GameMgr;
@@ -42,11 +44,22 @@ export class GameMgr {
             case GameStatus.None:
                 homeUI.active = true;
                 battleUI.active = false;
+                TimerMgr.inst.reset();
+                PropMgr.inst.reset();
+                PlayerMgr.inst.reset();
                 break;
             case GameStatus.Playing:
+                await this.addMapNode();
                 await PlayerMgr.inst.setPlayerVisible(true);
                 homeUI.active = false;
                 battleUI.active = true;
+                break;
+            case GameStatus.Revive:
+                const revive = tgxUIMgr.inst.isShowing(UI_BattleRevive);
+                if (!revive) {
+                    tgxUIMgr.inst.showUI(UI_BattleRevive);
+                    console.log("GameMgr.ts updateGameStatusUI() GameStatus.Revive");
+                }
                 break;
             case GameStatus.End:
                 tgxUIMgr.inst.showUI(UI_BattleResult);
@@ -65,6 +78,29 @@ export class GameMgr {
         await PlayerMgr.inst.genareatorAIPlayer();
         TimerMgr.inst.startCountdown();
     }
+
+    //添加地图节点
+    public async addMapNode() {
+        const mapUI = StormSunderGlobalInstance.instance.map;
+        const map = await this.loadAsyncMap();
+        const node = instantiate(map);
+        node.parent = mapUI;
+    }
+
+    //加载地图
+    public async loadAsyncMap(): Promise<Prefab> {
+        return new Promise((resolve, reject) => {
+            const bundle = assetManager.getBundle(resLoader.gameBundleName);
+            if (!bundle) {
+                console.error("module_nut is null!");
+                reject();
+            }
+
+            resLoader.loadAsync(resLoader.gameBundleName, `Prefabs/Map1`, Prefab).then((prefab: Prefab) => {
+                resolve(prefab);
+            })
+        })
+    }
 }
 
 export enum GameStatus {
@@ -72,6 +108,8 @@ export enum GameStatus {
     None,
     /** 游戏进行中 */
     Playing,
+    /** 复活中*/
+    Revive,
     /** 游戏结束 */
     End,
 }

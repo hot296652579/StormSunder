@@ -1,0 +1,131 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 286,
+      "max": [
+        0.5378105640411377,
+        0.4581120014190674,
+        0.5218039155006409
+      ],
+      "min": [
+        -0.5121091604232788,
+        -0.18868817389011383,
+        -0.52811598777771
+      ],
+      "name": "hamburger/POSITION",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 12,
+      "componentType": 5126,
+      "count": 286,
+      "name": "hamburger/NORMAL",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 24,
+      "componentType": 5126,
+      "count": 286,
+      "name": "hamburger/TEXCOORD_0",
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5123,
+      "count": 756,
+      "name": "hamburger/INDICES",
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "copyright": "Copyright (c) 2018-2020 Chukong Technologies Inc.",
+    "generator": "FBX-glTF-conv",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 9152,
+      "byteStride": 32,
+      "name": "hamburger",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1512,
+      "byteOffset": 9152,
+      "target": 34963
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 10664,
+      "uri": "out.bin"
+    }
+  ],
+  "extras": {
+    "FBX-glTF-conv": {
+      "animationFrameRate": 24.0,
+      "fbxFileHeaderInfo": {
+        "creationTimeStamp": {
+          "day": 14,
+          "hour": 11,
+          "millisecond": 814,
+          "minute": 42,
+          "month": 11,
+          "second": 49,
+          "year": 2024
+        },
+        "creator": "Blender (stable FBX IO) - 4.0.1 - 5.8.12",
+        "sceneInfo": {
+          "author": "",
+          "comment": "",
+          "keywords": "",
+          "original": {
+            "applicationName": "Blender (stable FBX IO)",
+            "applicationVendor": "Blender Foundation",
+            "applicationVersion": "4.0.1",
+            "fileName": "/foobar.fbx"
+          },
+          "revision": "",
+          "subject": "",
+          "title": "",
+          "url": "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Food\\hamburger.fbx"
+        }
+      }
+    }
+  },
+  "meshes": [
+    {
+      "name": "hamburger",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "hamburger"
+    }
+  ],
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}

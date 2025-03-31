@@ -1,0 +1,90 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "PaiMin",
+    "atlas": "",
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 130,
+      "height": 51
+    },
+    "offset": {
+      "x": 0,
+      "y": 0
+    },
+    "originalSize": {
+      "width": 130,
+      "height": 51
+    },
+    "rotated": false,
+    "capInsets": [
+      50,
+      0,
+      50,
+      0
+    ],
+    "vertices": {
+      "rawPosition": [
+        -65,
+        -25.5,
+        0,
+        65,
+        -25.5,
+        0,
+        -65,
+        25.5,
+        0,
+        65,
+        25.5,
+        0
+      ],
+      "indexes": [
+        0,
+        1,
+        2,
+        2,
+        1,
+        3
+      ],
+      "uv": [
+        0,
+        51,
+        130,
+        51,
+        0,
+        0,
+        130,
+        0
+      ],
+      "nuv": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "minPos": {
+        "x": -65,
+        "y": -25.5,
+        "z": 0
+      },
+      "maxPos": {
+        "x": 65,
+        "y": 25.5,
+        "z": 0
+      }
+    },
+    "texture": "22d9b9df-b03a-46aa-8e8c-907b3ce33d2c@6c48a",
+    "packable": true,
+    "pixelsToUnit": 100,
+    "pivot": {
+      "x": 0.5,
+      "y": 0.5
+    },
+    "meshType": 0
+  }
+}

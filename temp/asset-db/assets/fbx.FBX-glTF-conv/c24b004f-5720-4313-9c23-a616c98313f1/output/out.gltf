@@ -1,0 +1,131 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 86,
+      "max": [
+        0.3202041685581207,
+        0.16334529221057892,
+        0.5622687935829163
+      ],
+      "min": [
+        -0.3202041685581207,
+        -0.05000000074505806,
+        -0.5622687935829163
+      ],
+      "name": "chocolates/POSITION",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 12,
+      "componentType": 5126,
+      "count": 86,
+      "name": "chocolates/NORMAL",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 24,
+      "componentType": 5126,
+      "count": 86,
+      "name": "chocolates/TEXCOORD_0",
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5123,
+      "count": 420,
+      "name": "chocolates/INDICES",
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "copyright": "Copyright (c) 2018-2020 Chukong Technologies Inc.",
+    "generator": "FBX-glTF-conv",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 2752,
+      "byteStride": 32,
+      "name": "chocolates",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 840,
+      "byteOffset": 2752,
+      "target": 34963
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 3592,
+      "uri": "out.bin"
+    }
+  ],
+  "extras": {
+    "FBX-glTF-conv": {
+      "animationFrameRate": 24.0,
+      "fbxFileHeaderInfo": {
+        "creationTimeStamp": {
+          "day": 14,
+          "hour": 11,
+          "millisecond": 919,
+          "minute": 43,
+          "month": 11,
+          "second": 26,
+          "year": 2024
+        },
+        "creator": "Blender (stable FBX IO) - 4.0.1 - 5.8.12",
+        "sceneInfo": {
+          "author": "",
+          "comment": "",
+          "keywords": "",
+          "original": {
+            "applicationName": "Blender (stable FBX IO)",
+            "applicationVendor": "Blender Foundation",
+            "applicationVersion": "4.0.1",
+            "fileName": "/foobar.fbx"
+          },
+          "revision": "",
+          "subject": "",
+          "title": "",
+          "url": "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Food\\chocolates.fbx"
+        }
+      }
+    }
+  },
+  "meshes": [
+    {
+      "name": "chocolates",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "chocolates"
+    }
+  ],
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}

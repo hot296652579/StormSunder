@@ -1,0 +1,69 @@
+{
+  "__type__": "cc.JsonAsset",
+  "_name": "ai_config",
+  "_objFlags": 0,
+  "__editorExtras__": {},
+  "_native": "",
+  "json": {
+    "1": {
+      "text": "乱跑",
+      "range": 100,
+      "move_judge": 90,
+      "move_time": [
+        3,
+        6
+      ],
+      "escape_time": [
+        3,
+        6
+      ],
+      "pursuit_1": 30,
+      "pursuit_2": 30,
+      "pursuit_time": [
+        3,
+        6
+      ],
+      "weight": 20
+    },
+    "2": {
+      "text": "苟",
+      "range": 100,
+      "move_judge": 50,
+      "move_time": [
+        3,
+        6
+      ],
+      "escape_time": [
+        3,
+        6
+      ],
+      "pursuit_1": 10,
+      "pursuit_2": 10,
+      "pursuit_time": [
+        3,
+        6
+      ],
+      "weight": 10
+    },
+    "3": {
+      "text": "疯狗",
+      "range": 100,
+      "move_judge": 10,
+      "move_time": [
+        3,
+        6
+      ],
+      "escape_time": [
+        3,
+        6
+      ],
+      "pursuit_1": 90,
+      "pursuit_2": 50,
+      "pursuit_time": [
+        3,
+        6
+      ],
+      "weight": 5
+    }
+  }
+}

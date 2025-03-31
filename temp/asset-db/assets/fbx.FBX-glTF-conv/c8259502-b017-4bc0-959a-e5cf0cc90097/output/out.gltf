@@ -1,0 +1,951 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 533,
+      "max": [
+        0.697945773601532,
+        1.4538322687149048,
+        0.4795301854610443
+      ],
+      "min": [
+        -0.7929107546806335,
+        0.17933222651481628,
+        -0.8066155910491943
+      ],
+      "name": "lumbermill_Material0/POSITION",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 12,
+      "componentType": 5126,
+      "count": 533,
+      "name": "lumbermill_Material0/NORMAL",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 24,
+      "componentType": 5126,
+      "count": 533,
+      "name": "lumbermill_Material0/TEXCOORD_0",
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5123,
+      "count": 1296,
+      "name": "lumbermill_Material0/INDICES",
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 357,
+      "max": [
+        0.9074838757514954,
+        0.08109048753976822,
+        0.8508687019348145
+      ],
+      "min": [
+        -0.9165546894073486,
+        -0.015705034136772156,
+        -0.7079237699508667
+      ],
+      "name": "lumbermill_Material0/POSITION",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 12,
+      "componentType": 5126,
+      "count": 357,
+      "name": "lumbermill_Material0/NORMAL",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 24,
+      "componentType": 5126,
+      "count": 357,
+      "name": "lumbermill_Material0/TEXCOORD_0",
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 960,
+      "name": "lumbermill_Material0/INDICES",
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5126,
+      "count": 54,
+      "max": [
+        -8.730590343475342e-05,
+        1.3456473350524902,
+        0.11078505218029022
+      ],
+      "min": [
+        -0.644797146320343,
+        0.0660245418548584,
+        -0.603628933429718
+      ],
+      "name": "lumbermill_Material0/POSITION",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 4,
+      "byteOffset": 12,
+      "componentType": 5126,
+      "count": 54,
+      "name": "lumbermill_Material0/NORMAL",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 4,
+      "byteOffset": 24,
+      "componentType": 5126,
+      "count": 54,
+      "name": "lumbermill_Material0/TEXCOORD_0",
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5123,
+      "count": 90,
+      "name": "lumbermill_Material0/INDICES",
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5126,
+      "count": 1064,
+      "max": [
+        0.703582763671875,
+        1.197102427482605,
+        0.6741503477096558
+      ],
+      "min": [
+        -0.7021508812904358,
+        0.00045484304428100586,
+        -0.661431610584259
+      ],
+      "name": "lumbermill_Material0/POSITION",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 6,
+      "byteOffset": 12,
+      "componentType": 5126,
+      "count": 1064,
+      "name": "lumbermill_Material0/NORMAL",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 6,
+      "byteOffset": 24,
+      "componentType": 5126,
+      "count": 1064,
+      "name": "lumbermill_Material0/TEXCOORD_0",
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5123,
+      "count": 2484,
+      "name": "lumbermill_Material0/INDICES",
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 8,
+      "componentType": 5126,
+      "count": 122,
+      "max": [
+        0.4880128502845764,
+        0.49868208169937134,
+        0.5423514246940613
+      ],
+      "min": [
+        -0.2264481633901596,
+        0.083138108253479,
+        0.4616907835006714
+      ],
+      "name": "lumbermill_Material0/POSITION",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 8,
+      "byteOffset": 12,
+      "componentType": 5126,
+      "count": 122,
+      "name": "lumbermill_Material0/NORMAL",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 8,
+      "byteOffset": 24,
+      "componentType": 5126,
+      "count": 122,
+      "name": "lumbermill_Material0/TEXCOORD_0",
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 9,
+      "componentType": 5123,
+      "count": 264,
+      "name": "lumbermill_Material0/INDICES",
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "copyright": "Copyright (c) 2018-2020 Chukong Technologies Inc.",
+    "generator": "FBX-glTF-conv",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 17056,
+      "byteStride": 32,
+      "name": "lumbermill_Material0",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 2592,
+      "byteOffset": 17056,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 11424,
+      "byteOffset": 19648,
+      "byteStride": 32,
+      "name": "lumbermill_Material0",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1920,
+      "byteOffset": 31072,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1728,
+      "byteOffset": 32992,
+      "byteStride": 32,
+      "name": "lumbermill_Material0",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 180,
+      "byteOffset": 34720,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 34048,
+      "byteOffset": 34900,
+      "byteStride": 32,
+      "name": "lumbermill_Material0",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4968,
+      "byteOffset": 68948,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 3904,
+      "byteOffset": 73916,
+      "byteStride": 32,
+      "name": "lumbermill_Material0",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 528,
+      "byteOffset": 77820,
+      "target": 34963
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 78348,
+      "uri": "out.bin"
+    }
+  ],
+  "extras": {
+    "FBX-glTF-conv": {
+      "animationFrameRate": 24.0,
+      "fbxFileHeaderInfo": {
+        "creationTimeStamp": {
+          "day": 28,
+          "hour": 14,
+          "millisecond": 457,
+          "minute": 42,
+          "month": 7,
+          "second": 17,
+          "year": 2021
+        },
+        "creator": "Blender (stable FBX IO) - 2.80 (sub 75) - 4.14.14",
+        "sceneInfo": {
+          "author": "",
+          "comment": "",
+          "keywords": "",
+          "original": {
+            "applicationName": "Blender (stable FBX IO)",
+            "applicationVendor": "Blender Foundation",
+            "applicationVersion": "2.80 (sub 75)",
+            "fileName": "/foobar.fbx"
+          },
+          "revision": "",
+          "subject": "",
+          "title": "",
+          "url": "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Map\\lumbermill.fbx"
+        }
+      }
+    }
+  },
+  "materials": [
+    {
+      "extras": {
+        "FBX-glTF-conv": {
+          "raw": {
+            "properties": {
+              "ambient": {
+                "value": [
+                  0.05087608844041824,
+                  0.05087608844041824,
+                  0.05087608844041824
+                ]
+              },
+              "ambientFactor": {
+                "value": 0.0
+              },
+              "bump": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "bumpFactor": {
+                "value": 1.0
+              },
+              "diffuse": {
+                "value": [
+                  0.5778115391731262,
+                  0.23347531259059906,
+                  0.11534765362739563
+                ]
+              },
+              "diffuseFactor": {
+                "value": 1.0
+              },
+              "displacementColor": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "displacementFactor": {
+                "value": 1.0
+              },
+              "emissive": {
+                "value": [
+                  0.5778115391731262,
+                  0.23347531259059906,
+                  0.11534765362739563
+                ]
+              },
+              "emissiveFactor": {
+                "value": 0.0
+              },
+              "normalMap": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "reflection": {
+                "value": [
+                  0.5778115391731262,
+                  0.23347531259059906,
+                  0.11534765362739563
+                ]
+              },
+              "reflectionFactor": {
+                "value": 0.0
+              },
+              "shadingModel": "Phong",
+              "shininess": {
+                "value": 25.0
+              },
+              "specular": {
+                "value": [
+                  0.5778115391731262,
+                  0.23347531259059906,
+                  0.11534765362739563
+                ]
+              },
+              "specularFactor": {
+                "value": 0.25
+              },
+              "transparencyFactor": {
+                "value": 0.0
+              },
+              "transparentColor": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "vectorDisplacementColor": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "vectorDisplacementFactor": {
+                "value": 1.0
+              }
+            },
+            "type": "phong"
+          }
+        }
+      },
+      "name": "Brown"
+    },
+    {
+      "extras": {
+        "FBX-glTF-conv": {
+          "raw": {
+            "properties": {
+              "ambient": {
+                "value": [
+                  0.05087608844041824,
+                  0.05087608844041824,
+                  0.05087608844041824
+                ]
+              },
+              "ambientFactor": {
+                "value": 0.0
+              },
+              "bump": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "bumpFactor": {
+                "value": 1.0
+              },
+              "diffuse": {
+                "value": [
+                  0.1923278123140335,
+                  0.22819341719150543,
+                  0.24619518220424652
+                ]
+              },
+              "diffuseFactor": {
+                "value": 1.0
+              },
+              "displacementColor": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "displacementFactor": {
+                "value": 1.0
+              },
+              "emissive": {
+                "value": [
+                  0.1923278123140335,
+                  0.22819341719150543,
+                  0.24619518220424652
+                ]
+              },
+              "emissiveFactor": {
+                "value": 0.0
+              },
+              "normalMap": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "reflection": {
+                "value": [
+                  0.1923278123140335,
+                  0.22819341719150543,
+                  0.24619518220424652
+                ]
+              },
+              "reflectionFactor": {
+                "value": 0.0
+              },
+              "shadingModel": "Phong",
+              "shininess": {
+                "value": 35.99999928474426
+              },
+              "specular": {
+                "value": [
+                  0.1923278123140335,
+                  0.22819341719150543,
+                  0.24619518220424652
+                ]
+              },
+              "specularFactor": {
+                "value": 0.25
+              },
+              "transparencyFactor": {
+                "value": 0.0
+              },
+              "transparentColor": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "vectorDisplacementColor": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "vectorDisplacementFactor": {
+                "value": 1.0
+              }
+            },
+            "type": "phong"
+          }
+        }
+      },
+      "name": "Stone"
+    },
+    {
+      "extras": {
+        "FBX-glTF-conv": {
+          "raw": {
+            "properties": {
+              "ambient": {
+                "value": [
+                  0.05087608844041824,
+                  0.05087608844041824,
+                  0.05087608844041824
+                ]
+              },
+              "ambientFactor": {
+                "value": 0.0
+              },
+              "bump": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "bumpFactor": {
+                "value": 1.0
+              },
+              "diffuse": {
+                "value": [
+                  0.799102783203125,
+                  0.799102783203125,
+                  0.799102783203125
+                ]
+              },
+              "diffuseFactor": {
+                "value": 1.0
+              },
+              "displacementColor": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "displacementFactor": {
+                "value": 1.0
+              },
+              "emissive": {
+                "value": [
+                  0.799102783203125,
+                  0.799102783203125,
+                  0.799102783203125
+                ]
+              },
+              "emissiveFactor": {
+                "value": 0.0
+              },
+              "normalMap": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "reflection": {
+                "value": [
+                  0.799102783203125,
+                  0.799102783203125,
+                  0.799102783203125
+                ]
+              },
+              "reflectionFactor": {
+                "value": 0.0
+              },
+              "shadingModel": "Phong",
+              "shininess": {
+                "value": 35.99999928474426
+              },
+              "specular": {
+                "value": [
+                  0.799102783203125,
+                  0.799102783203125,
+                  0.799102783203125
+                ]
+              },
+              "specularFactor": {
+                "value": 0.25
+              },
+              "transparencyFactor": {
+                "value": 0.0
+              },
+              "transparentColor": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "vectorDisplacementColor": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "vectorDisplacementFactor": {
+                "value": 1.0
+              }
+            },
+            "type": "phong"
+          }
+        }
+      },
+      "name": "White"
+    },
+    {
+      "extras": {
+        "FBX-glTF-conv": {
+          "raw": {
+            "properties": {
+              "ambient": {
+                "value": [
+                  0.05087608844041824,
+                  0.05087608844041824,
+                  0.05087608844041824
+                ]
+              },
+              "ambientFactor": {
+                "value": 0.0
+              },
+              "bump": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "bumpFactor": {
+                "value": 1.0
+              },
+              "diffuse": {
+                "value": [
+                  0.32694560289382935,
+                  0.10152623057365417,
+                  0.05927089974284172
+                ]
+              },
+              "diffuseFactor": {
+                "value": 1.0
+              },
+              "displacementColor": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "displacementFactor": {
+                "value": 1.0
+              },
+              "emissive": {
+                "value": [
+                  0.32694560289382935,
+                  0.10152623057365417,
+                  0.05927089974284172
+                ]
+              },
+              "emissiveFactor": {
+                "value": 0.0
+              },
+              "normalMap": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "reflection": {
+                "value": [
+                  0.32694560289382935,
+                  0.10152623057365417,
+                  0.05927089974284172
+                ]
+              },
+              "reflectionFactor": {
+                "value": 0.0
+              },
+              "shadingModel": "Phong",
+              "shininess": {
+                "value": 35.99999928474426
+              },
+              "specular": {
+                "value": [
+                  0.32694560289382935,
+                  0.10152623057365417,
+                  0.05927089974284172
+                ]
+              },
+              "specularFactor": {
+                "value": 0.25
+              },
+              "transparencyFactor": {
+                "value": 0.0
+              },
+              "transparentColor": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "vectorDisplacementColor": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "vectorDisplacementFactor": {
+                "value": 1.0
+              }
+            },
+            "type": "phong"
+          }
+        }
+      },
+      "name": "BrownDark"
+    },
+    {
+      "extras": {
+        "FBX-glTF-conv": {
+          "raw": {
+            "properties": {
+              "ambient": {
+                "value": [
+                  0.05087608844041824,
+                  0.05087608844041824,
+                  0.05087608844041824
+                ]
+              },
+              "ambientFactor": {
+                "value": 0.0
+              },
+              "bump": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "bumpFactor": {
+                "value": 1.0
+              },
+              "diffuse": {
+                "value": [
+                  0.40126433968544006,
+                  0.47849249839782715,
+                  0.5173344612121582
+                ]
+              },
+              "diffuseFactor": {
+                "value": 1.0
+              },
+              "displacementColor": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "displacementFactor": {
+                "value": 1.0
+              },
+              "emissive": {
+                "value": [
+                  0.40126433968544006,
+                  0.47849249839782715,
+                  0.5173344612121582
+                ]
+              },
+              "emissiveFactor": {
+                "value": 0.0
+              },
+              "normalMap": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "reflection": {
+                "value": [
+                  0.40126433968544006,
+                  0.47849249839782715,
+                  0.5173344612121582
+                ]
+              },
+              "reflectionFactor": {
+                "value": 0.20000000298023224
+              },
+              "shadingModel": "Phong",
+              "shininess": {
+                "value": 48.99999833106996
+              },
+              "specular": {
+                "value": [
+                  0.40126433968544006,
+                  0.47849249839782715,
+                  0.5173344612121582
+                ]
+              },
+              "specularFactor": {
+                "value": 0.25
+              },
+              "transparencyFactor": {
+                "value": 0.0
+              },
+              "transparentColor": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "vectorDisplacementColor": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "vectorDisplacementFactor": {
+                "value": 1.0
+              }
+            },
+            "type": "phong"
+          }
+        }
+      },
+      "name": "Metal"
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Cube.795",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0
+        },
+        {
+          "attributes": {
+            "NORMAL": 5,
+            "POSITION": 4,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 1
+        },
+        {
+          "attributes": {
+            "NORMAL": 9,
+            "POSITION": 8,
+            "TEXCOORD_0": 10
+          },
+          "indices": 11,
+          "material": 2
+        },
+        {
+          "attributes": {
+            "NORMAL": 13,
+            "POSITION": 12,
+            "TEXCOORD_0": 14
+          },
+          "indices": 15,
+          "material": 3
+        },
+        {
+          "attributes": {
+            "NORMAL": 17,
+            "POSITION": 16,
+            "TEXCOORD_0": 18
+          },
+          "indices": 19,
+          "material": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "lumbermill"
+    }
+  ],
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}

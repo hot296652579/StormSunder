@@ -1,0 +1,423 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 91,
+      "max": [
+        0.15411944687366486,
+        0.4651607573032379,
+        0.09965212643146515
+      ],
+      "min": [
+        -0.15524083375930786,
+        -0.000911755720153451,
+        -0.09034993499517441
+      ],
+      "name": "detail_treeC_Material0/POSITION",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 12,
+      "componentType": 5126,
+      "count": 91,
+      "name": "detail_treeC_Material0/NORMAL",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 24,
+      "componentType": 5126,
+      "count": 91,
+      "name": "detail_treeC_Material0/TEXCOORD_0",
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5123,
+      "count": 351,
+      "name": "detail_treeC_Material0/INDICES",
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 172,
+      "max": [
+        0.2587195932865143,
+        0.7565363645553589,
+        0.2486431747674942
+      ],
+      "min": [
+        -0.27688834071159363,
+        0.29009827971458435,
+        -0.17305736243724823
+      ],
+      "name": "detail_treeC_Material0/POSITION",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 12,
+      "componentType": 5126,
+      "count": 172,
+      "name": "detail_treeC_Material0/NORMAL",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 24,
+      "componentType": 5126,
+      "count": 172,
+      "name": "detail_treeC_Material0/TEXCOORD_0",
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 660,
+      "name": "detail_treeC_Material0/INDICES",
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "copyright": "Copyright (c) 2018-2020 Chukong Technologies Inc.",
+    "generator": "FBX-glTF-conv",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 2912,
+      "byteStride": 32,
+      "name": "detail_treeC_Material0",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 702,
+      "byteOffset": 2912,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 5504,
+      "byteOffset": 3614,
+      "byteStride": 32,
+      "name": "detail_treeC_Material0",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1320,
+      "byteOffset": 9118,
+      "target": 34963
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 10438,
+      "uri": "out.bin"
+    }
+  ],
+  "extras": {
+    "FBX-glTF-conv": {
+      "animationFrameRate": 24.0,
+      "fbxFileHeaderInfo": {
+        "creationTimeStamp": {
+          "day": 28,
+          "hour": 14,
+          "millisecond": 363,
+          "minute": 42,
+          "month": 7,
+          "second": 17,
+          "year": 2021
+        },
+        "creator": "Blender (stable FBX IO) - 2.80 (sub 75) - 4.14.14",
+        "sceneInfo": {
+          "author": "",
+          "comment": "",
+          "keywords": "",
+          "original": {
+            "applicationName": "Blender (stable FBX IO)",
+            "applicationVendor": "Blender Foundation",
+            "applicationVersion": "2.80 (sub 75)",
+            "fileName": "/foobar.fbx"
+          },
+          "revision": "",
+          "subject": "",
+          "title": "",
+          "url": "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Map\\detail_treeC.fbx"
+        }
+      }
+    }
+  },
+  "materials": [
+    {
+      "extras": {
+        "FBX-glTF-conv": {
+          "raw": {
+            "properties": {
+              "ambient": {
+                "value": [
+                  0.05087608844041824,
+                  0.05087608844041824,
+                  0.05087608844041824
+                ]
+              },
+              "ambientFactor": {
+                "value": 0.0
+              },
+              "bump": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "bumpFactor": {
+                "value": 1.0
+              },
+              "diffuse": {
+                "value": [
+                  0.32694560289382935,
+                  0.10152623057365417,
+                  0.05927089974284172
+                ]
+              },
+              "diffuseFactor": {
+                "value": 1.0
+              },
+              "displacementColor": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "displacementFactor": {
+                "value": 1.0
+              },
+              "emissive": {
+                "value": [
+                  0.32694560289382935,
+                  0.10152623057365417,
+                  0.05927089974284172
+                ]
+              },
+              "emissiveFactor": {
+                "value": 0.0
+              },
+              "normalMap": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "reflection": {
+                "value": [
+                  0.32694560289382935,
+                  0.10152623057365417,
+                  0.05927089974284172
+                ]
+              },
+              "reflectionFactor": {
+                "value": 0.0
+              },
+              "shadingModel": "Phong",
+              "shininess": {
+                "value": 35.99999928474426
+              },
+              "specular": {
+                "value": [
+                  0.32694560289382935,
+                  0.10152623057365417,
+                  0.05927089974284172
+                ]
+              },
+              "specularFactor": {
+                "value": 0.25
+              },
+              "transparencyFactor": {
+                "value": 0.0
+              },
+              "transparentColor": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "vectorDisplacementColor": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "vectorDisplacementFactor": {
+                "value": 1.0
+              }
+            },
+            "type": "phong"
+          }
+        }
+      },
+      "name": "BrownDark"
+    },
+    {
+      "extras": {
+        "FBX-glTF-conv": {
+          "raw": {
+            "properties": {
+              "ambient": {
+                "value": [
+                  0.05087608844041824,
+                  0.05087608844041824,
+                  0.05087608844041824
+                ]
+              },
+              "ambientFactor": {
+                "value": 0.0
+              },
+              "bump": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "bumpFactor": {
+                "value": 1.0
+              },
+              "diffuse": {
+                "value": [
+                  0.02141951024532318,
+                  0.25731161236763,
+                  0.26676133275032043
+                ]
+              },
+              "diffuseFactor": {
+                "value": 1.0
+              },
+              "displacementColor": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "displacementFactor": {
+                "value": 1.0
+              },
+              "emissive": {
+                "value": [
+                  0.02141951024532318,
+                  0.25731161236763,
+                  0.26676133275032043
+                ]
+              },
+              "emissiveFactor": {
+                "value": 0.0
+              },
+              "normalMap": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "reflection": {
+                "value": [
+                  0.02141951024532318,
+                  0.25731161236763,
+                  0.26676133275032043
+                ]
+              },
+              "reflectionFactor": {
+                "value": 0.0
+              },
+              "shadingModel": "Phong",
+              "shininess": {
+                "value": 35.99999928474426
+              },
+              "specular": {
+                "value": [
+                  0.02141951024532318,
+                  0.25731161236763,
+                  0.26676133275032043
+                ]
+              },
+              "specularFactor": {
+                "value": 0.25
+              },
+              "transparencyFactor": {
+                "value": 0.0
+              },
+              "transparentColor": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "vectorDisplacementColor": {
+                "value": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "vectorDisplacementFactor": {
+                "value": 1.0
+              }
+            },
+            "type": "phong"
+          }
+        }
+      },
+      "name": "GreenDark"
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Cube.792",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0
+        },
+        {
+          "attributes": {
+            "NORMAL": 5,
+            "POSITION": 4,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 1
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "detail_treeC"
+    }
+  ],
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}

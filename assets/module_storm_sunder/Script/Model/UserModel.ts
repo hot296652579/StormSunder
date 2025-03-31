@@ -7,7 +7,7 @@ import { AttributeBonusMgr, BonusType } from "../Manager/AttributeBonusMgr";
 */
 export class UserModel {
     money: number = 999999;
-    nickName: string = '爸爸在此'; //昵称
+    nickName: string = 'player'; //昵称
     // userTornadoLevel: number = 1; //玩家风暴等级
 
     /** 游戏内基础攻击*/
@@ -46,6 +46,8 @@ export class UserModel {
     game_pass_reward_multiple: number = 0;
 
     bonusData: Record<BonusType, BonusItem> = null;
+
+    uniqueNames: Set<string> = new Set<string>();
 
     constructor() {
     }

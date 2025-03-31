@@ -15,6 +15,13 @@ export class PropComponent extends Component {
 
     @property({ type: CCFloat })
     currentExp: number = 10;
+    get getExp() {
+        return this.currentExp;
+    }
+
+    set setExp(value: number) {
+        this.currentExp = value;
+    }
 
     @property({ type: CCBoolean, displayName: "是否可移动" })
     isMove: boolean = false;
@@ -28,6 +35,7 @@ export class PropComponent extends Component {
     start() {
         this.status = PropStatus.LIFE;
         this.currentHp = this.hp;
+        this.setExp = 500;
 
         this.tigger = this.node.getComponent(Collider)!;
         this.tigger.on('onTriggerEnter', this.onTriggerEnter, this);
@@ -56,14 +64,16 @@ export class PropComponent extends Component {
     }
 
     //卷入龙卷风
-    swallow() {
+    swallow(target: Node) {
         Tween.stopAllByTarget(this.node);
         tween(this.node)
-            .by(1, { position: new Vec3(0, this.node.position.y + 5, 0) })
+            .to(0.7, { position: new Vec3(0, this.node.position.y + 1, 0) })
+            .to(0.7, { scale: new Vec3(0, 0, 0) })
             .call(() => {
                 this.node.removeFromParent();
                 this.node.destroy();
             })
+            .union()
             .start();
     }
 

@@ -1,0 +1,90 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "BoFangGuanGao",
+    "atlas": "",
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 122,
+      "height": 66
+    },
+    "offset": {
+      "x": 0,
+      "y": 0
+    },
+    "originalSize": {
+      "width": 122,
+      "height": 66
+    },
+    "rotated": false,
+    "capInsets": [
+      80,
+      0,
+      35,
+      0
+    ],
+    "vertices": {
+      "rawPosition": [
+        -61,
+        -33,
+        0,
+        61,
+        -33,
+        0,
+        -61,
+        33,
+        0,
+        61,
+        33,
+        0
+      ],
+      "indexes": [
+        0,
+        1,
+        2,
+        2,
+        1,
+        3
+      ],
+      "uv": [
+        0,
+        66,
+        122,
+        66,
+        0,
+        0,
+        122,
+        0
+      ],
+      "nuv": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "minPos": {
+        "x": -61,
+        "y": -33,
+        "z": 0
+      },
+      "maxPos": {
+        "x": 61,
+        "y": 33,
+        "z": 0
+      }
+    },
+    "texture": "c43b8389-4da7-4460-9292-e9bf05acd6ae@6c48a",
+    "packable": true,
+    "pixelsToUnit": 100,
+    "pivot": {
+      "x": 0.5,
+      "y": 0.5
+    },
+    "meshType": 0
+  }
+}

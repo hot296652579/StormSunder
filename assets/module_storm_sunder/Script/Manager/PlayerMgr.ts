@@ -74,6 +74,10 @@ export class PlayerMgr {
     async playerAddComponent(): Promise<void> {
         return new Promise((resolve, reject) => {
             this.getTornadoNode().then(node => {
+                const comp = node.getComponent(TornadoComponent);
+                if (comp) {
+                    comp.destroy();
+                }
                 node.addComponent(TornadoComponent)!;
                 resolve();
             })
@@ -192,6 +196,27 @@ export class PlayerMgr {
         const rankings = this.getRanking();
         const playerRank = rankings.find(p => p.isPlayer);
         return playerRank ? playerRank.rank : -1;
+    }
+
+    //销毁除第一个节点外的其他AI节点
+    public destroyOtherAI() {
+        const playersUI = StormSunderGlobalInstance.instance.players!;
+        for (let i = 1; i < playersUI.removeChild.length; i++) {
+            playersUI.removeChild[i].destroy();
+        }
+    }
+
+    reset() {
+        this.destroyOtherAI();
+        this.aiIndex = 0;
+
+        //去除掉除第一个节点外的其他AI节点
+        const playersUI = StormSunderGlobalInstance.instance.players!;
+        playersUI.children.forEach((child, index) => {
+            if (child.getComponent(TornadoAIComponent)) {
+                child.getComponent(TornadoAIComponent)!.node.destroy();
+            }
+        })
     }
 
 }

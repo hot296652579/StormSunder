@@ -19,7 +19,7 @@ export class TimerMgr {
         return this.Instance;
     }
 
-    public countDownTime: number = 300;
+    public countDownTime: number = 10;
     private timerId: number = 0;
     private propMgr: PropMgr;
 
@@ -57,7 +57,9 @@ export class TimerMgr {
             clearInterval(this.timerId);
             this.timerId = 0;
             GameMgr.inst.isWin = true;
-            GameMgr.inst.setGameStatus(GameStatus.End);
+            if (GameMgr.inst.getGameStatus() == GameStatus.Playing) {
+                GameMgr.inst.setGameStatus(GameStatus.End);
+            }
         }
     }
 
@@ -67,8 +69,10 @@ export class TimerMgr {
     }
 
     // 销毁时清理
-    public destroy(): void {
+    public reset(): void {
         this.stopCountdown();
-        director.getScheduler().unscheduleUpdate(this);
+        Scheduler.enableForTarget(this);
+
+        this.countDownTime = 30;
     }
 }

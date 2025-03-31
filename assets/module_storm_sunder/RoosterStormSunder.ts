@@ -5,7 +5,7 @@ import { GameEvent } from './Script/Enum/GameEvent';
 import { GameUtil } from './Script/GameUtil';
 
 import { tgxUIMgr } from '../core_tgx/tgx';
-import { UI_Setting } from '../scripts/UIDef';
+import { UI_BattleResult, UI_BattleRevive, UI_Setting } from '../scripts/UIDef';
 import { StormSunderAudioMgr } from './Script/Manager/StormSunderAudioMgr';
 import { GameMgr, GameStatus } from './Script/Manager/GameMgr';
 import { AttributeBonusMgr } from './Script/Manager/AttributeBonusMgr';
@@ -24,6 +24,8 @@ export class RoosterStormSunder extends Component {
     protected start(): void {
         this.initialize();
         this.registerListener();
+
+        GameMgr.inst.setGameStatus(GameStatus.None);
     }
 
     async initialize() {

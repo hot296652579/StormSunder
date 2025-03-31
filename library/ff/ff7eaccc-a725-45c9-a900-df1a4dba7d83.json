@@ -1,0 +1,89 @@
+{
+  "__type__": "cc.JsonAsset",
+  "_name": "name_config",
+  "_objFlags": 0,
+  "__editorExtras__": {},
+  "_native": "",
+  "json": {
+    "1": {
+      "text_1": "beautiful",
+      "text_2": "cat"
+    },
+    "2": {
+      "text_1": "big",
+      "text_2": "cheese"
+    },
+    "3": {
+      "text_1": "small",
+      "text_2": "dog"
+    },
+    "4": {
+      "text_1": "dangerous",
+      "text_2": "orange"
+    },
+    "5": {
+      "text_1": "easy",
+      "text_2": "sister"
+    },
+    "6": {
+      "text_1": "good",
+      "text_2": "bike"
+    },
+    "7": {
+      "text_1": "happy",
+      "text_2": "potato"
+    },
+    "8": {
+      "text_1": "sad",
+      "text_2": "cook"
+    },
+    "9": {
+      "text_1": "noisy",
+      "text_2": "teacher"
+    },
+    "10": {
+      "text_1": "quiet",
+      "text_2": "bird"
+    },
+    "11": {
+      "text_1": "young",
+      "text_2": "fish"
+    },
+    "12": {
+      "text_1": "rich",
+      "text_2": "panda"
+    },
+    "13": {
+      "text_1": "strong",
+      "text_2": "santa claus"
+    },
+    "14": {
+      "text_1": "weak",
+      "text_2": "guitar"
+    },
+    "15": {
+      "text_1": "angry",
+      "text_2": "artist"
+    },
+    "16": {
+      "text_1": "delicious",
+      "text_2": "old man"
+    },
+    "17": {
+      "text_1": "famous",
+      "text_2": "tornado"
+    },
+    "18": {
+      "text_1": "free",
+      "text_2": "superman"
+    },
+    "19": {
+      "text_1": "crazy",
+      "text_2": "child"
+    },
+    "20": {
+      "text_1": "confident",
+      "text_2": "joker"
+    }
+  }
+}

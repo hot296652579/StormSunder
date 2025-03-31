@@ -1,0 +1,30 @@
+{
+  "__type__": "cc.JsonAsset",
+  "_name": "develop_config",
+  "_objFlags": 0,
+  "__editorExtras__": {},
+  "_native": "",
+  "json": {
+    "1": {
+      "property_type": 1,
+      "base": 0,
+      "up_value": 1,
+      "base_currency": 350,
+      "money_growth": 350
+    },
+    "2": {
+      "property_type": 2,
+      "base": 0,
+      "up_value": 1,
+      "base_currency": 450,
+      "money_growth": 450
+    },
+    "3": {
+      "property_type": 3,
+      "base": 0,
+      "up_value": 10,
+      "base_currency": 400,
+      "money_growth": 400
+    }
+  }
+}

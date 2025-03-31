@@ -1,0 +1,281 @@
+{
+  "path": {
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\Materials\\glow-inner-v1.effect": [
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\sprite-vs.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\uniforms\\cc-global.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\uniforms\\cc-local.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\sprite-fs.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\internal\\embedded-alpha.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\internal\\alpha-test.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\sprite-vs.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\uniforms\\cc-global.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\uniforms\\cc-local.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\sprite-fs.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\internal\\embedded-alpha.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\internal\\alpha-test.chunk"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\dragon\\edgeLight.effect": [
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\standard-vs.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\legacy\\input-standard.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\legacy\\decode-standard.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\legacy\\decode-base.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\common\\common-define.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\common\\data\\unpack.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\legacy\\morph.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\functionalities\\morph-animation.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\uniforms\\cc-morph.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\legacy\\skinning.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\uniforms\\cc-skinning.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\functionalities\\skinning-animation-lbs.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\uniforms\\cc-global.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\legacy\\local-batch.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\uniforms\\cc-local-batched.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\uniforms\\cc-local.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\functionalities\\world-transform.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\shared-ubos.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\legacy\\fog-vs.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\legacy\\fog-base.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\functionalities\\fog.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\common\\effect\\fog.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\legacy\\shadow-map-vs.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\uniforms\\cc-shadow.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\legacy\\shadow-map-base.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\functionalities\\shadow-map.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\uniforms\\cc-csm.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\common\\math\\coordinates.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\uniforms\\cc-shadow-map.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\common\\data\\packing.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\common\\shadow\\native-pcf.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\legacy\\lightingmap-vs.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\standard-fs.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\legacy\\shading-standard.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\legacy\\shading-standard-base.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\common\\color\\gamma.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\common\\texture\\texture-lod.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\uniforms\\cc-environment.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\common\\math\\number.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\common\\lighting\\functions.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\uniforms\\cc-diffusemap.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\uniforms\\cc-reflection-probe.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\functionalities\\probe.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\legacy\\sh-fs.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\uniforms\\cc-sh.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\functionalities\\sh.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\legacy\\shading-standard-additive.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\legacy\\lighting.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\uniforms\\cc-forward-light.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\common\\lighting\\attenuation.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\legacy\\output-standard.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\common\\color\\aces.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\legacy\\shadow-map-fs.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\legacy\\fog-fs.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\legacy\\lightingmap-fs.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\builtin\\uniforms\\cc-light-map.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\common\\lighting\\light-map.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\shadow-caster-vs.chunk",
+      "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.2\\resources\\resources\\3d\\engine\\editor\\assets\\chunks\\shadow-caster-fs.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\standard-vs.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\legacy\\input-standard.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\legacy\\decode-standard.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\legacy\\decode-base.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\common\\common-define.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\common\\data\\unpack.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\legacy\\morph.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\functionalities\\morph-animation.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\uniforms\\cc-morph.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\legacy\\skinning.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\uniforms\\cc-skinning.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\functionalities\\skinning-animation-lbs.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\uniforms\\cc-global.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\legacy\\local-batch.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\uniforms\\cc-local-batched.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\uniforms\\cc-local.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\functionalities\\world-transform.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\shared-ubos.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\legacy\\fog-vs.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\legacy\\fog-base.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\functionalities\\fog.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\common\\effect\\fog.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\legacy\\shadow-map-vs.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\uniforms\\cc-shadow.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\legacy\\shadow-map-base.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\functionalities\\shadow-map.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\uniforms\\cc-csm.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\common\\math\\coordinates.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\uniforms\\cc-shadow-map.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\common\\data\\packing.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\common\\shadow\\native-pcf.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\legacy\\lightingmap-vs.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\standard-fs.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\legacy\\shading-standard.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\legacy\\shading-standard-base.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\common\\color\\gamma.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\common\\texture\\texture-lod.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\uniforms\\cc-environment.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\common\\math\\number.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\common\\lighting\\functions.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\uniforms\\cc-diffusemap.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\uniforms\\cc-reflection-probe.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\functionalities\\probe.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\legacy\\sh-fs.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\uniforms\\cc-sh.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\functionalities\\sh.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\legacy\\shading-standard-additive.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\legacy\\lighting.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\uniforms\\cc-forward-light.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\common\\lighting\\attenuation.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\legacy\\output-standard.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\common\\color\\aces.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\legacy\\shadow-map-fs.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\legacy\\fog-fs.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\legacy\\lightingmap-fs.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\builtin\\uniforms\\cc-light-map.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\common\\lighting\\light-map.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\shadow-caster-vs.chunk",
+      "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\chunks\\shadow-caster-fs.chunk"
+    ]
+  },
+  "uuid": {
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\model_scene\\Material\\cartoon_build.mtl": [
+      "9b20a514-6cc3-49de-b216-b6b863046249"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\model_scene\\Material\\cartoon_ground.mtl": [
+      "9b20a514-6cc3-49de-b216-b6b863046249"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\model_scene\\Material\\ocean.mtl": [
+      "c8f66d17-351a-48da-a12c-0212d28575c4"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\model_scene\\Material\\whiteline.mtl": [
+      "a3cd009f-0ab0-420d-9278-b9fdab939bbc"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\Materials\\cartoon_build.mtl": [
+      "9b20a514-6cc3-49de-b216-b6b863046249"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\Materials\\cartoon_ground.mtl": [
+      "9b20a514-6cc3-49de-b216-b6b863046249"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\Materials\\foods.mtl": [
+      "c8f66d17-351a-48da-a12c-0212d28575c4"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\Materials\\glow-inner-v1.mtl": [
+      "6cfc2e06-e30d-4607-bf94-f9e220395257"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\Materials\\material.mtl": [
+      "c8f66d17-351a-48da-a12c-0212d28575c4"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\Materials\\ocean.mtl": [
+      "c8f66d17-351a-48da-a12c-0212d28575c4"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\Materials\\whiteline.mtl": [
+      "a3cd009f-0ab0-420d-9278-b9fdab939bbc"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\model_scene\\Storm\\Material\\M_Par.mtl": [
+      "d1346436-ac96-4271-b863-1f4fdead95b0"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\model_scene\\Storm\\Material\\M_sidePar.mtl": [
+      "d1346436-ac96-4271-b863-1f4fdead95b0"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Building\\M_building.mtl": [
+      "c8f66d17-351a-48da-a12c-0212d28575c4"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Map\\newMap01.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\altman\\blue.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\altman\\red.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\altman\\yellow.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\aulaNew\\aula.mtl": [
+      "a7612b54-35e3-4238-a1a9-4a7b54635839"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\axe\\blue.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\axe\\red.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\axe\\yellow.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\boomDragonNew\\boomDragon.mtl": [
+      "a7612b54-35e3-4238-a1a9-4a7b54635839"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\catapult\\blue.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\catapult\\red.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\catapult\\yellow.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\cell\\cell01.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\cell\\cell02.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\clown\\blue.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\clown\\red.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\clown\\yellow.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\dragon\\dragon.mtl": [
+      "a7612b54-35e3-4238-a1a9-4a7b54635839"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\dragon\\dragonHit.mtl": [
+      "f38bba13-68fe-4786-ac10-f324148af80d"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\hellFireNew\\hellFire.mtl": [
+      "a7612b54-35e3-4238-a1a9-4a7b54635839"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\javelin\\blue.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\javelin\\red.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\javelin\\yellow.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\magicianNew\\magician.mtl": [
+      "a7612b54-35e3-4238-a1a9-4a7b54635839"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\soldier\\blue.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\soldier\\red.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\soldier\\yellow.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Storm\\Material\\M_Par.mtl": [
+      "d1346436-ac96-4271-b863-1f4fdead95b0"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Storm\\Material\\M_sidePar.mtl": [
+      "d1346436-ac96-4271-b863-1f4fdead95b0"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\altman\\Materials_altman01\\Material #2.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\axe\\Materials_axe01\\Material #4.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\body\\Materials_shadow01.FBX\\Material #3.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ],
+    "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\module_storm_sunder\\FBX\\Enemy\\javelin\\Materials_javelin01\\Material #6.mtl": [
+      "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    ]
+  }
+}

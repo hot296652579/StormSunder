@@ -1,0 +1,137 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 398,
+      "max": [
+        0.42894256114959717,
+        0.8210402727127075,
+        0.7463714480400085
+      ],
+      "min": [
+        -0.43116524815559387,
+        0.0011804637033492327,
+        -0.8877500891685486
+      ],
+      "name": "立方体.007/POSITION",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 12,
+      "componentType": 5126,
+      "count": 398,
+      "name": "立方体.007/NORMAL",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 24,
+      "componentType": 5126,
+      "count": 398,
+      "name": "立方体.007/TEXCOORD_0",
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5123,
+      "count": 852,
+      "name": "立方体.007/INDICES",
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "copyright": "Copyright (c) 2018-2020 Chukong Technologies Inc.",
+    "generator": "FBX-glTF-conv",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 12736,
+      "byteStride": 32,
+      "name": "立方体.007",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1704,
+      "byteOffset": 12736,
+      "target": 34963
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 14440,
+      "uri": "out.bin"
+    }
+  ],
+  "extras": {
+    "FBX-glTF-conv": {
+      "animationFrameRate": 25.0,
+      "fbxFileHeaderInfo": {
+        "creationTimeStamp": {
+          "day": 25,
+          "hour": 16,
+          "millisecond": 981,
+          "minute": 19,
+          "month": 3,
+          "second": 58,
+          "year": 2025
+        },
+        "creator": "Blender (stable FBX IO) - 4.4.0 - 5.12.7",
+        "sceneInfo": {
+          "author": "",
+          "comment": "",
+          "keywords": "",
+          "original": {
+            "applicationName": "Blender (stable FBX IO)",
+            "applicationVendor": "Blender Foundation",
+            "applicationVersion": "4.4.0",
+            "fileName": "/foobar.fbx"
+          },
+          "revision": "",
+          "subject": "",
+          "title": "",
+          "url": "E:\\CocosCreator\\StormSunder_Github\\StormSunder\\assets\\model_scene\\Model\\House\\car1.fbx"
+        }
+      }
+    }
+  },
+  "meshes": [
+    {
+      "name": "立方体.007",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "立方体.002",
+      "rotation": [
+        6.123234262925839e-17,
+        1.0,
+        6.123234262925839e-17,
+        3.7493993930529855e-33
+      ]
+    }
+  ],
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}
