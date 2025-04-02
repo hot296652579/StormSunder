@@ -1,6 +1,6 @@
 /** 2dUI 特效 血条 粒子等管理器*/
 
-import { assetManager, instantiate, Prefab, Node, UITransform, Vec3, Vec2, view, Game } from "cc";
+import { assetManager, instantiate, Prefab, Node, UITransform, Vec3, Vec2, view, Game, tween } from "cc";
 import { resLoader } from "db://assets/core_tgx/base/ResLoader";
 import { StormSunderGlobalInstance } from "../StormSunderGlobalInstance";
 import { BloodComponent } from "../Component/BloodComponent";
@@ -8,6 +8,8 @@ import { PlayerInfo, PlayerInfoComponent } from "../Component/PlayerInfoComponen
 import { TornadoComponent } from "../Component/TornadoComponent";
 import { GameUtil } from "../GameUtil";
 import { ExpPropComponent } from "../Component/ExpPropComponent";
+import { PkPropUI } from "../PkPropUI";
+import { StormSunderAudioMgr } from "./StormSunderAudioMgr";
 
 export class Effect2DUIMgr {
     private static _instance: Effect2DUIMgr;
@@ -37,7 +39,7 @@ export class Effect2DUIMgr {
                     bloodComp.updateHP(hpPercent);
                 }
 
-                const height = existing.getComponent(UITransform).height * 20;
+                const height = existing.getComponent(UITransform).height * 15;
 
                 console.log('height:', height);
                 this.setPlayerInfoPosition(existing, target, bloodUI, height);
@@ -63,7 +65,7 @@ export class Effect2DUIMgr {
                 bloodComp.updateHP(hpPercent);
             }
 
-            const height = bloodNode.getComponent(UITransform).height * 20;
+            const height = bloodNode.getComponent(UITransform).height * 15;
             this.setPlayerInfoPosition(bloodNode, target, bloodUI, height);
             this.bloodMap.set(target, bloodNode);
         } catch (error) {
@@ -146,6 +148,47 @@ export class Effect2DUIMgr {
         }
     }
 
+    //目标添加升级特效
+    async addLevelUp(target: Node) {
+        StormSunderAudioMgr.playOneShot(StormSunderAudioMgr.getMusicIdName(3), 1.0);
+        const levelUpPrefab = await resLoader.loadAsync(
+            resLoader.gameBundleName,
+            "Prefabs/LevelUp",
+            Prefab
+        );
+
+        if (levelUpPrefab) {
+            const levelUpNode = instantiate(levelUpPrefab);
+            const effectUI = StormSunderGlobalInstance.instance.effectUI;
+            levelUpNode.parent = effectUI;
+
+            this.setPlayerInfoPosition(levelUpNode, target, effectUI, 0);
+
+            tween(levelUpNode)
+                .to(1, { position: levelUpNode.position.add(new Vec3(0, 200, 0)) })
+                .call(() => {
+                    levelUpNode.destroy();
+                })
+                .start();
+        }
+    }
+
+    //pk信息
+    async addPKInfo(player1: string, player2: string) {
+        const pkPrefab = await resLoader.loadAsync(
+            resLoader.gameBundleName,
+            "Prefabs/PkProp",
+            Prefab
+        );
+
+        if (pkPrefab) {
+            const pkNode = instantiate(pkPrefab);
+            const effectUI = StormSunderGlobalInstance.instance.effectUI;
+            pkNode.parent = effectUI;
+            pkNode.getComponent(PkPropUI).updateBattleInfo(player1, player2);
+        }
+    }
+
     // 清理血条
     removeBlood(target: Node) {
         const bloodNode = this.bloodMap.get(target);
@@ -162,6 +205,18 @@ export class Effect2DUIMgr {
             infoNode.destroy();
             this.playerInfoMap.delete(target);
         }
+    }
+
+    reset() {
+        this.bloodMap.forEach((v) => {
+            v.destroy();
+        });
+        this.bloodMap.clear();
+
+        this.playerInfoMap.forEach((v) => {
+            v.destroy();
+        });
+        this.playerInfoMap.clear();
     }
 }
 

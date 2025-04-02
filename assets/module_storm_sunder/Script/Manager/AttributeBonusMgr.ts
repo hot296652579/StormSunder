@@ -6,6 +6,7 @@ import { AiConfigModel } from "../Model/AiConfigModel";
 import { EventDispatcher } from "db://assets/core_tgx/easy_ui_framework/EventDispatcher";
 import { GameEvent } from "../Enum/GameEvent";
 import { NameConfigModel } from "../Model/NameConfigModel";
+import { MapConfigModel } from "../Model/MapConfigModel";
 
 /** 属性加成管理器*/
 export class AttributeBonusMgr {
@@ -22,11 +23,13 @@ export class AttributeBonusMgr {
     developConfig: DevelopConfigModel;
     aiConfig: AiConfigModel;
     mainConfig: MainConfigModel;
+    mapConfig: MapConfigModel;
 
     initilize() {
         this.userModel = new UserModel();
         this.nameModelConfig = new NameConfigModel();
         this.mainConfig = new MainConfigModel();
+        this.mapConfig = new MapConfigModel();
         this.developConfig = new DevelopConfigModel();
         this.aiConfig = new AiConfigModel();
         this.userModel.initialize();

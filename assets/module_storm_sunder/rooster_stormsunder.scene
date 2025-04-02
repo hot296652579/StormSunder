@@ -575,7 +575,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0.666,
+      "x": 9.323,
       "y": 0,
       "z": 23.264
     },
@@ -777,7 +777,7 @@
     "propertyPath": [
       "_name"
     ],
-    "value": "Storm"
+    "value": "Player"
   },
   {
     "__type__": "cc.TargetInfo",

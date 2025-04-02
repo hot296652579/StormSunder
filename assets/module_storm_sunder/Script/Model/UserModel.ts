@@ -6,7 +6,7 @@ import { AttributeBonusMgr, BonusType } from "../Manager/AttributeBonusMgr";
  * @param expPower 经验加成
 */
 export class UserModel {
-    money: number = 999999;
+    money: number = 0;
     nickName: string = 'player'; //昵称
     // userTornadoLevel: number = 1; //玩家风暴等级
 
@@ -71,7 +71,7 @@ export class UserModel {
         this.game_modleVolume_base = mainConfig.getPramById(12);
         this.game_lv_modleVolume_up = mainConfig.getPramById(13);
 
-        this.game_tornado_damage = mainConfig.getPramById(14);
+        this.game_tornado_damage = mainConfig.getPramById(14); //开局扩大范围
         this.game_ai_range = mainConfig.getPramById(15);
         this.game_base_pass_reward = mainConfig.getPramById(16);
         this.game_reward_develop = mainConfig.getPramById(17);

@@ -4,10 +4,12 @@ import { tgxUIMgr } from "db://assets/core_tgx/tgx";
 import { StormSunderGlobalInstance } from "../StormSunderGlobalInstance";
 import { PropMgr } from "./PropMgr";
 import { TimerMgr } from "./TimerMgr";
-import { UI_BattleResult, UI_BattleRevive } from "db://assets/scripts/UIDef";
+import { UI_BattleGambit, UI_BattleResult, UI_BattleRevive } from "db://assets/scripts/UIDef";
 import { PlayerMgr } from "./PlayerMgr";
 import { assetManager, instantiate, Prefab } from "cc";
 import { resLoader } from "db://assets/core_tgx/base/ResLoader";
+import { Effect2DUIMgr } from "./Effect2DUIMgr";
+import { MapMgr } from "./MapMgr";
 
 export class GameMgr {
     private static _instance: GameMgr;
@@ -44,15 +46,25 @@ export class GameMgr {
             case GameStatus.None:
                 homeUI.active = true;
                 battleUI.active = false;
-                TimerMgr.inst.reset();
+                MapMgr.Instance.setMapInfo(1);
                 PropMgr.inst.reset();
+                Effect2DUIMgr.inst.reset();
                 PlayerMgr.inst.reset();
+                TimerMgr.inst.reset();
                 break;
-            case GameStatus.Playing:
-                await this.addMapNode();
+            case GameStatus.Gambit:
+                await MapMgr.Instance.addMapNode();
                 await PlayerMgr.inst.setPlayerVisible(true);
+                await PlayerMgr.inst.setPlayerPosition();
                 homeUI.active = false;
                 battleUI.active = true;
+
+                const gambit = tgxUIMgr.inst.isShowing(UI_BattleGambit);
+                if (!gambit) {
+                    tgxUIMgr.inst.showUI(UI_BattleGambit);
+                }
+                break;
+            case GameStatus.Playing:
                 break;
             case GameStatus.Revive:
                 const revive = tgxUIMgr.inst.isShowing(UI_BattleRevive);
@@ -72,34 +84,10 @@ export class GameMgr {
     }
 
     public async startGame() {
-        GameMgr.inst.setGameStatus(GameStatus.Playing);
         await PropMgr.inst.genatorProp();
         await PlayerMgr.inst.playerAddComponent();
         await PlayerMgr.inst.genareatorAIPlayer();
-        TimerMgr.inst.startCountdown();
-    }
-
-    //添加地图节点
-    public async addMapNode() {
-        const mapUI = StormSunderGlobalInstance.instance.map;
-        const map = await this.loadAsyncMap();
-        const node = instantiate(map);
-        node.parent = mapUI;
-    }
-
-    //加载地图
-    public async loadAsyncMap(): Promise<Prefab> {
-        return new Promise((resolve, reject) => {
-            const bundle = assetManager.getBundle(resLoader.gameBundleName);
-            if (!bundle) {
-                console.error("module_nut is null!");
-                reject();
-            }
-
-            resLoader.loadAsync(resLoader.gameBundleName, `Prefabs/Map1`, Prefab).then((prefab: Prefab) => {
-                resolve(prefab);
-            })
-        })
+        GameMgr.inst.setGameStatus(GameStatus.Gambit);
     }
 }
 
@@ -108,6 +96,8 @@ export enum GameStatus {
     None,
     /** 游戏进行中 */
     Playing,
+    /** 开局*/
+    Gambit,
     /** 复活中*/
     Revive,
     /** 游戏结束 */

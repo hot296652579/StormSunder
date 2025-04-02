@@ -16,7 +16,7 @@ export class ButtonComponent extends Component {
     @property(Button) btSpeed: Button = null!;
     @property(Button) btExp: Button = null!;
 
-    protected start(): void {
+    protected onEnable(): void {
         this.addUIEvent();
         this.updateBtView(BonusType.ATTACK);
         this.updateBtView(BonusType.SPEED);
@@ -37,10 +37,13 @@ export class ButtonComponent extends Component {
 
         // 检查金额是否足够
         if (!AttributeBonusMgr.inst.checkMoneyEnough(bonus.upgradeCost)) {
-            console.log("金额不足");
-            //DOTO 看广告
-            this.updateBtStatus(type);
-            return;
+            if (!GlobalConfig.isDebug) {
+                AdvertMgr.instance.showReawardVideo(() => {
+                    this.upLevelBonus(type);
+                })
+            } else {
+                this.upLevelBonus(type);
+            }
         }
 
         // 扣除金额
@@ -48,6 +51,13 @@ export class ButtonComponent extends Component {
             return;
         }
 
+        this.upLevelBonus(type);
+        // console.log(`当前属性最终加成:${AttributeBonusMgr.inst.getBonus(type)}`);
+    }
+
+    private upLevelBonus(type: BonusType): void {
+        const { userModel } = AttributeBonusMgr.inst;
+        const bonus = userModel.bonusData[type];
         // 升级逻辑
         bonus.level++;
         // 更新升级消耗
@@ -57,8 +67,6 @@ export class ButtonComponent extends Component {
         // 更新按钮状态
         this.updateBtView(type);
         this.onUpdateBtnsStatus();
-
-        console.log(`当前属性最终加成:${AttributeBonusMgr.inst.getBonus(type)}`)
     }
 
     private onUpdateBtnsStatus(): void {

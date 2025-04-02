@@ -5,15 +5,15 @@
   "uuid": "5091f6bb-e21c-4a60-9073-5b3292b4c532",
   "files": [],
   "subMetas": {
-    "81124": {
+    "cd716": {
       "importer": "gltf-mesh",
-      "uuid": "5091f6bb-e21c-4a60-9073-5b3292b4c532@81124",
+      "uuid": "5091f6bb-e21c-4a60-9073-5b3292b4c532@cd716",
       "displayName": "",
-      "id": "81124",
-      "name": "立方体.007.mesh",
+      "id": "cd716",
+      "name": "car1.mesh",
       "userData": {
         "gltfIndex": 0,
-        "triangleCount": 284
+        "triangleCount": 166
       },
       "ver": "1.1.1",
       "imported": true,
@@ -66,7 +66,7 @@
     },
     "assetFinder": {
       "meshes": [
-        "5091f6bb-e21c-4a60-9073-5b3292b4c532@81124"
+        "5091f6bb-e21c-4a60-9073-5b3292b4c532@cd716"
       ],
       "skeletons": [],
       "textures": [],

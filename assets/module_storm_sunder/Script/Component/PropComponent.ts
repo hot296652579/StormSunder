@@ -1,5 +1,7 @@
-import { _decorator, CCBoolean, CCFloat, Collider, Component, ITriggerEvent, Node, PhysicsSystem, tween, Tween, Vec3 } from 'cc';
+import { _decorator, CCBoolean, CCFloat, Collider, Component, isValid, ITriggerEvent, Node, PhysicsSystem, tween, Tween, Vec3 } from 'cc';
 import { Effect2DUIMgr } from '../Manager/Effect2DUIMgr';
+import { StormSunderAudioMgr } from '../Manager/StormSunderAudioMgr';
+import { GameMgr, GameStatus } from '../Manager/GameMgr';
 const { ccclass, property } = _decorator;
 
 export enum PropStatus {
@@ -26,6 +28,8 @@ export class PropComponent extends Component {
     @property({ type: CCBoolean, displayName: "是否可移动" })
     isMove: boolean = false;
 
+    private isShaking: boolean = false;
+
     currentHp: number = 0;
     status: PropStatus = PropStatus.LIFE;
     speed: number = 50;
@@ -39,6 +43,7 @@ export class PropComponent extends Component {
 
         this.tigger = this.node.getComponent(Collider)!;
         this.tigger.on('onTriggerEnter', this.onTriggerEnter, this);
+        this.tigger.on('onTriggerStay', this.onTriggerStay, this);
         this.tigger.on('onTriggerExit', this.onTriggerExit, this);
     }
 
@@ -57,6 +62,7 @@ export class PropComponent extends Component {
 
         //小于0时死亡
         if (this.currentHp <= 0) {
+            StormSunderAudioMgr.playOneShot(StormSunderAudioMgr.getMusicIdName(4), 1.0);
             this.currentHp = 0;
             this.status = PropStatus.DIE;
             Effect2DUIMgr.Instance.removeBlood(this.node);
@@ -77,11 +83,50 @@ export class PropComponent extends Component {
             .start();
     }
 
+    private shake() {
+        if (this.isShaking || this.isMove) return;
+        this.isShaking = true;
+
+        const originalPosition = this.node.position.clone();
+        const shakeStrength = 0.2;
+        const shakeDuration = 0.05;
+
+        tween(this.node)
+            .to(shakeDuration, { position: new Vec3(originalPosition.x + shakeStrength, originalPosition.y, originalPosition.z) })
+            .to(shakeDuration, { position: new Vec3(originalPosition.x - shakeStrength, originalPosition.y, originalPosition.z) })
+            .to(shakeDuration, { position: new Vec3(originalPosition.x, originalPosition.y + shakeStrength, originalPosition.z) })
+            .to(shakeDuration, { position: new Vec3(originalPosition.x, originalPosition.y - shakeStrength, originalPosition.z) })
+            .to(shakeDuration, { position: originalPosition })
+            .call(() => {
+                this.isShaking = false;
+            })
+            .start();
+    }
+
     protected onTriggerEnter(event: ITriggerEvent): void {
+    }
+
+    protected onTriggerStay(event: ITriggerEvent): void {
+        if (GameMgr.inst.getGameStatus() != GameStatus.Playing) return;
+        //建筑抖动效果
+        if (isValid(this.node)) {
+            const otherCollider = event.otherCollider.node;
+            if (otherCollider.name == "RigibodyStorm") {
+                // this.shake();
+            }
+        }
     }
 
     onTriggerExit(event: ITriggerEvent): void {
         Effect2DUIMgr.Instance.removeBlood(this.node);
+
+        // if (!this.isMove) {
+        //     const otherCollider = event.otherCollider.node;
+        //     if (otherCollider.name == "RigibodyStorm") {
+        //         Tween.stopAllByTarget(this.node);
+        //         this.isShaking = false;
+        //     }
+        // }
     }
 
     update(deltaTime: number) {
@@ -89,7 +134,7 @@ export class PropComponent extends Component {
     }
 
     protected onDestroy(): void {
-
+        Tween.stopAllByTarget(this.node);
     }
 }
 

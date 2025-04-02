@@ -245,7 +245,7 @@
     "node": {
       "__id__": 7
     },
-    "_enabled": true,
+    "_enabled": false,
     "__prefab": {
       "__id__": 9
     },
@@ -319,8 +319,8 @@
     "__prefab": {
       "__id__": 13
     },
-    "_group": 1,
-    "_type": 1,
+    "_group": 16,
+    "_type": 4,
     "_mass": 1,
     "_allowSleep": true,
     "_linearDamping": 0.1,
@@ -388,8 +388,8 @@
     "__prefab": {
       "__id__": 17
     },
-    "hp": 600,
-    "currentExp": 10,
+    "hp": 10,
+    "currentExp": 5,
     "isMove": false,
     "_id": ""
   },

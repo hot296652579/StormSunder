@@ -6,9 +6,12 @@ import { PlayerMgr } from "./PlayerMgr";
 import { GameMgr, GameStatus } from "./GameMgr";
 
 const propRes = [
-    "Prefabs/Props/altman",
-    "Prefabs/Props/aula",
-    "Prefabs/Props/clown",
+    // "Prefabs/Props/altman",
+    // "Prefabs/Props/aula",
+    // "Prefabs/Props/clown",
+    // "Prefabs/Props/hellFire",
+    "Prefabs/Props/cow",
+    "Prefabs/Props/sheep",
 ]
 
 /** 道具管理器*/
@@ -36,7 +39,7 @@ export class PropMgr {
 
     public tornadoNode: Node = null;//玩家节点
 
-    public spawnRadius: number = 20; // 生成范围半径
+    public spawnRadius: number = 10; // 生成范围半径
     public raycastDistance: number = 1;//射线检测距离
     curMovePropsCount: number = 0; //当前移动道具数量
     lastCreateTime: number = 0;//上次生成时间
@@ -78,7 +81,6 @@ export class PropMgr {
                 newMonster.setParent(propsUI);
                 newMonster.setWorldPosition(spawnPos);
                 this.curMovePropsCount++;
-                // console.log("怪物生成成功", spawnPos);
             }
 
             // console.warn("未找到合适的怪物生成点");
@@ -102,7 +104,7 @@ export class PropMgr {
         if (!this.tornadoNode || !this.tornadoNode.worldPosition) return;
 
         let playerPos = this.tornadoNode.worldPosition;
-        let angle = Math.random() * Math.PI * 2; // 随机角度
+        let angle = Math.random() * Math.PI * 180; // 随机角度
         let distance = Math.random() * this.spawnRadius + this.spawnRadius;
 
         // 创建射线检测前方障碍物

@@ -8,7 +8,6 @@ import { PropComponent, PropStatus } from './PropComponent';
 import { PlayerInfo } from './PlayerInfoComponent';
 import { Effect2DUIMgr } from '../Manager/Effect2DUIMgr';
 import { AttributeBonusMgr } from '../Manager/AttributeBonusMgr';
-import { TornadoAIComponent } from './TornadoAIComponent';
 import { EasyControllerEvent } from 'db://assets/core_tgx/easy_controller/EasyController';
 const { ccclass, property } = _decorator;
 
@@ -25,8 +24,8 @@ export class TornadoComponent extends Component {
     points: Node[] = [];
     tornado: Node = null!;
     rigidBody: RigidBody = null!;
-    tigger: Collider = null!; //龙卷风触发器
-    radiusTigger: Collider = null!;     //龙卷风半径检测触发器
+    tigger: BoxCollider = null!; //龙卷风触发器
+    radiusTigger: CylinderCollider = null!;     //龙卷风半径检测触发器
 
     ai: boolean = false;
     attack: number = 20;
@@ -58,8 +57,8 @@ export class TornadoComponent extends Component {
 
         this.tornado = this.node.getChildByName('RigibodyStorm')!;
         this.rigidBody = this.tornado.getComponent(RigidBody)!;
-        this.tigger = this.tornado.getComponent(Collider)!;
-        this.radiusTigger = this.node.getChildByName('radiusTigger').getComponent(Collider)!;
+        this.tigger = this.tornado.getComponent(BoxCollider)!;
+        this.radiusTigger = this.node.getChildByName('radiusTigger').getComponent(CylinderCollider)!;
 
         this.tigger.on('onTriggerEnter', this.onTriggerEnter, this);
         this.tigger.on('onTriggerStay', this.onTriggerStay, this);
@@ -70,7 +69,7 @@ export class TornadoComponent extends Component {
         this.attributeBonusMgr = AttributeBonusMgr.inst;
         const userModel = this.attributeBonusMgr.userModel;
 
-        this.currentLv = 1;
+        this.currentLv = 2;
         this.currentExp = 0;
         this.nextExp = this.attributeBonusMgr.getExpNeed(this.currentLv + 1);
         this.attack = this.attributeBonusMgr.getStormSunderAttack(this.currentLv);
@@ -78,9 +77,9 @@ export class TornadoComponent extends Component {
         this.nickName = userModel.nickName;
         this.height = userModel.game_tornado_base_height;
         this.speed = Math.round((this.speed / 2) * 100) / 100;
+        this.speed = this.speed * 1.2;//测试
 
-        console.log(`玩家的攻击力 :${this.attack}} 速度:${this.speed}`);
-
+        console.log(`玩家的速度:${this.speed}`);
         this.playerInfo = {
             nickName: this.nickName,
             level: this.currentLv,
@@ -92,6 +91,7 @@ export class TornadoComponent extends Component {
 
     protected registerEvent() {
         EventDispatcher.instance.on(GameEvent.EVENT_STORM_LEVEL_UP, this.stormLevelUp, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_GAME_START_EFFECT, this.onGambitEffect, this);
     }
 
     protected onTriggerEnter(event: ITriggerEvent): void {
@@ -100,16 +100,6 @@ export class TornadoComponent extends Component {
 
         if (event.otherCollider.getGroup() === 1 << 2) {
             this.setPositionByObstacle(event);
-        } else if (otherCollider.getGroup() == 1 << 3) {
-            const targetTornado = otherCollider.node.parent.getComponent(TornadoComponent);
-            if (!targetTornado) return;
-
-            console.log(`当前等级:${this.currentLv} 目标等级:${targetTornado.currentLv} isAI:${targetTornado.ai}`);
-            if (this.currentLv > targetTornado.currentLv) {
-                this.curHitObj = targetTornado.node;
-                this.addExpByKill();
-                this.killed(targetTornado.node);
-            }
         }
     }
 
@@ -204,8 +194,29 @@ export class TornadoComponent extends Component {
                     this.addExpByKill();
                 }
             }
-        }
+        } else if (otherCollider.getGroup() == 1 << 3) {
+            const targetTornado = otherCollider.node.parent.getComponent(TornadoComponent);
+            if (!targetTornado) return;
 
+            if (event.selfCollider.node.name == 'RigibodyStorm') {
+                if (event.otherCollider.node.name == 'RigibodyStorm') {
+                    console.log('碰撞到其他龙卷风碰撞器!!!!');
+                    const distance = Vec3.distance(event.selfCollider.node.worldPosition, otherCollider.node.worldPosition);
+                    // console.log(`龙卷风之间 distance:${distance}`);
+                    if (distance <= 2) {
+                        if (this.currentLv > targetTornado.currentLv) {
+                            // console.log(`玩家等级:${this.currentLv}  大于  targetTornado等级:${targetTornado.currentLv}`);
+                            StormSunderAudioMgr.playOneShot(StormSunderAudioMgr.getMusicIdName(5), 1.0);
+                            this.curHitObj = targetTornado.node;
+                            this.addExpByKill();
+                            this.killed(targetTornado.node);
+
+                            Effect2DUIMgr.inst.addPKInfo(this.nickName, targetTornado.nickName);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     //被击杀
@@ -295,6 +306,8 @@ export class TornadoComponent extends Component {
         this.speed = attributeBonusMgr.getStormSunderSpeed(this.currentLv);
         this.speed = Math.round((this.speed / 2) * 100) / 100;
         this.currentExp = 0;
+
+        Effect2DUIMgr.inst.addLevelUp(this.node);
     }
 
     //变大体积
@@ -309,9 +322,18 @@ export class TornadoComponent extends Component {
         this.updateCameraView();
     }
 
+    //开局特效
+    private onGambitEffect() {
+        const multiple: number = AttributeBonusMgr.inst.userModel.game_tornado_damage;
+        const scaleFactor = multiple / 100;
+        const size = this.tigger.size;
+        this.tigger.size = new Vec3(size.x + size.x * scaleFactor, size.y + size.y * scaleFactor, size.z + size.z * scaleFactor);
+        // console.log(`龙卷风碰撞 开局特效启动 最新size:${this.tigger.size}}`);
+    }
+
     private updateCameraView() {
         const sence = director.getScene();
-        const view = 50 + this.currentLv * 2;
+        const view = 50 + this.currentLv * 1;
         sence.emit(EasyControllerEvent.CAMERA_ZOOM, view);
     }
 
@@ -325,6 +347,11 @@ export class TornadoComponent extends Component {
 
     protected unregisterEvent() {
         EventDispatcher.instance.off(GameEvent.EVENT_STORM_LEVEL_UP, this.stormLevelUp, this);
+        EventDispatcher.instance.off(GameEvent.EVENT_GAME_START_EFFECT, this.onGambitEffect, this);
+
+        this.tigger.off('onTriggerEnter', this.onTriggerEnter, this);
+        this.tigger.off('onTriggerStay', this.onTriggerStay, this);
+        this.tigger.off('onTriggerExit', this.onTriggerExit, this);
     }
 
 }

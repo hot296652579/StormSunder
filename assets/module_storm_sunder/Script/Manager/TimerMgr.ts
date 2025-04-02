@@ -4,6 +4,8 @@ import { StormSunderGlobalInstance } from "../StormSunderGlobalInstance";
 import { PropMgr } from "./PropMgr"; // 假设PropMgr在同一个目录下
 import { GameMgr, GameStatus } from "./GameMgr";
 import { GameUtil } from "../GameUtil";
+import { AttributeBonusMgr } from "./AttributeBonusMgr";
+import { MapMgr } from "./MapMgr";
 
 /** 时间管理器*/
 export class TimerMgr {
@@ -19,7 +21,7 @@ export class TimerMgr {
         return this.Instance;
     }
 
-    public countDownTime: number = 10;
+    public countDownTime: number = 1;
     private timerId: number = 0;
     private propMgr: PropMgr;
 
@@ -72,7 +74,10 @@ export class TimerMgr {
     public reset(): void {
         this.stopCountdown();
         Scheduler.enableForTarget(this);
+        director.getScheduler().unscheduleAllForTarget(this);
 
-        this.countDownTime = 30;
+        const mapConfig = MapMgr.Instance.getMapConfig(1);
+        this.countDownTime = mapConfig.time;
+        this.countDownTime = 100; //测试
     }
 }

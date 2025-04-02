@@ -4,6 +4,9 @@ export class GameEvent {
     /** 游戏开始*/
     static readonly EVENT_GAME_START = 'EVENT_GAME_START';
 
+    /** 开局特效*/
+    static readonly EVENT_GAME_START_EFFECT = 'EVENT_GAME_START_EFFECT';
+
     /** 刷新排行榜*/
     static readonly EVENT_REFRESH_RANK = 'EVENT_REFRESH_RANK';
 

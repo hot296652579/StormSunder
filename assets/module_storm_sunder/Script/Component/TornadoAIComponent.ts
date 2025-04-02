@@ -1,12 +1,12 @@
-import { BoxCollider, Component, ITriggerEvent, Node, Tween, Vec3, _decorator, randomRange } from 'cc';
+import { BoxCollider, Component, Game, ITriggerEvent, Node, Tween, Vec3, _decorator, randomRange } from 'cc';
 import { PathfindingManager } from '../Manager/PathfindingManager';
 import { PlayerStatus, TornadoComponent } from './TornadoComponent';
 import { GameUtil } from '../GameUtil';
 import { PropMgr } from '../Manager/PropMgr';
 import { GameMgr, GameStatus } from '../Manager/GameMgr';
 import { PlayerMgr } from '../Manager/PlayerMgr';
-import { tgxUIMgr } from 'db://assets/core_tgx/tgx';
-import { UI_BattleRevive } from 'db://assets/scripts/UIDef';
+import { EventDispatcher } from 'db://assets/core_tgx/easy_ui_framework/EventDispatcher';
+import { GameEvent } from '../Enum/GameEvent';
 
 const { ccclass, property } = _decorator;
 
@@ -38,19 +38,25 @@ export class TornadoAIComponent extends TornadoComponent {
 
         this.initAIPlayer();
         this.onPlayerInfoHandler();
-        this.decideAction(); // 进入行为循环
-
+        this.tigger.on('onTriggerEnter', this.onTriggerEnter, this);
         this.radiusTigger.on('onTriggerEnter', this.onRadiusTriggerEnter, this);
+        this.registerEvent();
+    }
+
+    protected registerEvent(): void {
+        EventDispatcher.instance.on(GameEvent.EVENT_GAME_START, this.decideAction, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_GAME_START_EFFECT, this.decideAction, this);
     }
 
     private initAIPlayer() {
         const aiConfig = PlayerMgr.inst.getRandomAIConfig();
         // console.log(aiConfig.data);
         //text:名称 range:检测半径 move_juge:移动概率 move_time:移动时间 escape_time:逃跑时间 pursuit_1:追击玩家概率 pursuit_2:追击AI概率 pursuit_time:追击时间
-        const { text, range, move_judge, move_time, escape_time, pursuit_1, pursuit_2, pursuit_time } = aiConfig.data;
+        const { ange, move_judge, move_time, escape_time, pursuit_1, pursuit_2, pursuit_time } = aiConfig.data;
+        let text = PlayerMgr.inst.generateUniqueName(20);
         this.playerInfo.nickName = text;
         this.nickName = text;
-        this.currentLv = 11;
+        this.currentLv = 1;
         this.playerInfo.level = this.currentLv;
 
         this.moveDuration = Math.floor(move_time[0] + Math.random() * (move_time[1] - move_time[0] + 1));
@@ -60,20 +66,21 @@ export class TornadoAIComponent extends TornadoComponent {
         this.chasePlayerProbability = pursuit_2;
 
         //test 
-        this.chasePlayerProbability = 100;
+        // this.chaseAIProbability = 100;
+        // this.chasePlayerProbability = 100;
         this.moveProbability = move_judge;
 
         this.nextExp = this.attributeBonusMgr.getExpNeed(this.currentLv + 1);
         this.attack = this.attributeBonusMgr.getStormSunderAttack(this.currentLv, true);
         this.speed = this.attributeBonusMgr.getStormSunderSpeed(this.currentLv, true);
         this.speed = Math.round((this.speed / 2) * 100) / 100;
-
-        // console.log(`AI 攻击力:${this.attack} 速度:${this.speed} 下一级经验:${this.nextExp}`);
+        // this.speed = this.speed * 0.2;//测试
+        console.log(`AI速度:${this.speed}`);
     }
 
     /** 选择 AI 行为 */
     private decideAction() {
-        if (this.playerStatus == PlayerStatus.DIE) return; // AI 死亡时不执行行为
+        if (this.playerStatus == PlayerStatus.DIE || !this.node) return; // AI 死亡时不执行行为
 
         const move = Math.random() * 100 < this.moveProbability;
 
@@ -116,7 +123,7 @@ export class TornadoAIComponent extends TornadoComponent {
         }, this.moveDuration);
     }
 
-    protected onTriggerEnter(event: ITriggerEvent): void {
+    protected override onTriggerEnter(event: ITriggerEvent): void {
         if (event.otherCollider.getGroup() === 1 << 2) {
             this.unscheduleAllCallbacks();
             this.isChasing = false;
@@ -131,17 +138,22 @@ export class TornadoAIComponent extends TornadoComponent {
     }
 
     protected onTriggerStay(event: ITriggerEvent): void {
+        if (GameMgr.inst.getGameStatus() != GameStatus.Playing) return;
         super.onTriggerStay(event);
-        const otherCollider = event.otherCollider;
 
-        if (otherCollider.getGroup() == 1 << 3) {
+        const otherCollider = event.otherCollider;
+        if (event.otherCollider.getGroup() === 1 << 3) {
             const targetTornado = otherCollider.node.parent.getComponent(TornadoComponent);
             if (!targetTornado) return;
 
-            const isPlayer = targetTornado instanceof TornadoComponent;
-            if (this.currentLv > targetTornado.currentLv && isPlayer) {
-                GameMgr.inst.isWin = false;
-                GameMgr.inst.setGameStatus(GameStatus.Revive);
+            const distance = Vec3.distance(this.node.worldPosition, otherCollider.node.worldPosition);
+            if (distance < 0.2) {
+                const isAI = targetTornado.ai;
+                if (this.currentLv > targetTornado.currentLv && !isAI) {
+                    GameMgr.inst.isWin = false;
+                    console.log(`AI 触发碰撞到:${targetTornado.name} isAI:${isAI}`);
+                    GameMgr.inst.setGameStatus(GameStatus.Revive);
+                }
             }
         }
     }
@@ -169,6 +181,7 @@ export class TornadoAIComponent extends TornadoComponent {
             } else if (targetLv < this.currentLv) {
                 // 目标等级比自己低 → 先判断是否追击
                 if (Math.random() * 100 < this.chaseAIProbability) {
+                    this.cancelAction();
                     if (isTargetAI) {
                         // 目标是 AI，直接追击
                         this.chaseTarget(targetTornado.node);
@@ -200,24 +213,20 @@ export class TornadoAIComponent extends TornadoComponent {
     /** 追击目标 */
     private chaseTarget(target: Node) {
         if (this.isChasing) return;
-        // console.log(`AI 追击目标->>>>>>>>>>>>>`);
+        console.log(`AI 追击目标-> ${target.name}}`);
 
         this.isChasing = true;
         this.targetNode = target;
 
         PathfindingManager.getInstance().followTarget(this, target, this.speed, () => {
             // console.log(`AI 追击目标到达`);
-            this.unscheduleAllCallbacks();
-            this.isChasing = false;
-            this.targetNode = null;
+            this.cancelAction();
             this.decideAction();
         });
 
         // 追击时间结束后恢复行为
         this.scheduleOnce(() => {
-            this.isChasing = false;
-            this.targetNode = null;
-            this.decideAction();
+            this.cancelAction();
         }, this.chaseDuration);
     }
 
@@ -237,9 +246,24 @@ export class TornadoAIComponent extends TornadoComponent {
         PathfindingManager.getInstance().moveTo(this.node, escapePosition, this.escapeDuration);
 
         this.scheduleOnce(() => {
-            this.isEscaping = false;
-            this.decideAction();
+            this.cancelAction();
         }, this.escapeDuration);
+    }
+
+    //取消AI行为
+    private cancelAction() {
+        this.unscheduleAllCallbacks();
+        this.isChasing = false;
+        this.isEscaping = false;
+        this.targetNode = null;
+        Tween.stopAllByTarget(this.node);
+    }
+
+    protected onDestroy(): void {
+        super.onDestroy();
+        this.cancelAction();
+        EventDispatcher.instance.off(GameEvent.EVENT_GAME_START, this.decideAction, this);
+        EventDispatcher.instance.off(GameEvent.EVENT_GAME_START_EFFECT, this.decideAction, this);
     }
 
 }

@@ -245,7 +245,7 @@
     "node": {
       "__id__": 7
     },
-    "_enabled": true,
+    "_enabled": false,
     "__prefab": {
       "__id__": 9
     },
@@ -360,7 +360,7 @@
     "_isTrigger": true,
     "_center": {
       "__type__": "cc.Vec3",
-      "x": -0.3,
+      "x": -0.15,
       "y": 3.1,
       "z": 0
     },
@@ -368,7 +368,7 @@
       "__type__": "cc.Vec3",
       "x": 2.5,
       "y": 6.5,
-      "z": 4.6
+      "z": 4.516
     },
     "_id": ""
   },
@@ -388,8 +388,8 @@
     "__prefab": {
       "__id__": 17
     },
-    "hp": 500,
-    "currentExp": 10,
+    "hp": 25,
+    "currentExp": 30,
     "isMove": false,
     "_id": ""
   },

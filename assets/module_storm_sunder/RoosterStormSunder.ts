@@ -18,7 +18,7 @@ export class RoosterStormSunder extends Component {
     onLoad() {
         AttributeBonusMgr.inst.initilize();
         StormSunderAudioMgr.initilize();
-        // StormSunderAudioMgr.play(StormSunderAudioMgr.getMusicIdName(1), 1.0);
+        StormSunderAudioMgr.play(StormSunderAudioMgr.getMusicIdName(1), 1.0);
     }
 
     protected start(): void {

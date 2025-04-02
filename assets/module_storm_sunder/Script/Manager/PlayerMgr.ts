@@ -5,6 +5,7 @@ import { TornadoComponent } from "../Component/TornadoComponent";
 import { TornadoAIComponent } from "../Component/TornadoAIComponent";
 import { AttributeBonusMgr } from "./AttributeBonusMgr";
 import { Tableai_config } from "db://assets/module_basic/table/Tableai_config";
+import { MapMgr } from "./MapMgr";
 
 const res = [
     "Prefabs/Storm",
@@ -26,7 +27,7 @@ export class PlayerMgr {
 
     public tornadoNode: Node = null;//玩家节点
     public aiPlayersConfig: Map<number, any> = new Map();//AI玩家配置
-    public createAIPlayerCount: number = 3;//创建AI玩家数量
+    public createAIPlayerCount: number = 1;//创建AI玩家数量
     public aiConfigCount: number = 3;//AI配置数量
 
     private aiIndex: number = 0;//AI索引
@@ -35,6 +36,9 @@ export class PlayerMgr {
     //创建AI玩家
     public async genareatorAIPlayer(): Promise<void> {
         return new Promise(async (resolve, reject) => {
+            const mapConfig = MapMgr.Instance.getMapConfig(1);
+            this.createAIPlayerCount = mapConfig.count;
+            this.createAIPlayerCount = 3;//测试
             const aiPoints = StormSunderGlobalInstance.instance.aiPoints;
             for (let i = 0; i < this.createAIPlayerCount; i++) {
                 const infoPrefab = await resLoader.loadAsync(resLoader.gameBundleName, res[0], Prefab);
@@ -71,6 +75,14 @@ export class PlayerMgr {
         tornado.active = visible;
     }
 
+    //设置玩家出生位置
+    async setPlayerPosition() {
+        const mapNode = await this.getMapNode();
+        const bornPos = mapNode.children[0].getChildByName('bornPos')!;
+        const tornado = await this.getTornadoNode();
+        tornado.setPosition(bornPos.position);
+    }
+
     async playerAddComponent(): Promise<void> {
         return new Promise((resolve, reject) => {
             this.getTornadoNode().then(node => {
@@ -81,6 +93,15 @@ export class PlayerMgr {
                 node.addComponent(TornadoComponent)!;
                 resolve();
             })
+        })
+    }
+
+    async getMapNode(): Promise<Node> {
+        return new Promise((resolve, reject) => {
+            const map = StormSunderGlobalInstance.instance.map!;
+            if (map) {
+                resolve(map);
+            }
         })
     }
 
@@ -201,22 +222,39 @@ export class PlayerMgr {
     //销毁除第一个节点外的其他AI节点
     public destroyOtherAI() {
         const playersUI = StormSunderGlobalInstance.instance.players!;
-        for (let i = 1; i < playersUI.removeChild.length; i++) {
-            playersUI.removeChild[i].destroy();
-        }
-    }
-
-    reset() {
-        this.destroyOtherAI();
-        this.aiIndex = 0;
-
-        //去除掉除第一个节点外的其他AI节点
-        const playersUI = StormSunderGlobalInstance.instance.players!;
         playersUI.children.forEach((child, index) => {
             if (child.getComponent(TornadoAIComponent)) {
                 child.getComponent(TornadoAIComponent)!.node.destroy();
             }
         })
+    }
+
+    //随机拼接名称
+    generateUniqueName(idMax: number): string {
+        const uniqueNames = AttributeBonusMgr.inst.userModel.uniqueNames;
+        const randomId = Math.floor(Math.random() * idMax) + 1; // 随机获取 1 到 idMax 之间的值
+        const config = AttributeBonusMgr.inst.nameModelConfig.getPramById(randomId);
+
+        if (config) {
+            let newName = `${config.text_1}${config.text_2}`;
+            let counter = 1;
+
+            // 确保名称唯一
+            while (uniqueNames.has(newName)) {
+                newName = `${config.text_1}${config.text_2}_${counter}`;
+                counter++;
+            }
+
+            uniqueNames.add(newName);
+            return newName; // 直接返回拼接好的名字
+        }
+
+        return ""; // 若无有效名称，返回空字符串
+    }
+
+    reset() {
+        this.destroyOtherAI();
+        this.aiIndex = 0;
     }
 
 }

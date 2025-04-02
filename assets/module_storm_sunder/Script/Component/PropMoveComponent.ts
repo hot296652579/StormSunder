@@ -23,7 +23,13 @@ export class PropMoveComponent extends PropComponent {
 
         this.moveSpeed = Math.round((this.moveSpeed / 10) * 100) / 100;
         // 初始化随机移动方向
+        this.randomAngle();
         this.changeDirection();
+    }
+
+    //随机角度
+    private randomAngle() {
+        this.node.setRotationFromEuler(0, randomRange(0, 360), 0);
     }
 
     protected override onTriggerEnter(event: ITriggerEvent) {

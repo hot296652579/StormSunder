@@ -55,9 +55,9 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
+      "x": 0.7,
+      "y": 0.7,
+      "z": 0.7
     },
     "_mobility": 0,
     "_layer": 1073741824,
@@ -245,7 +245,7 @@
     "node": {
       "__id__": 7
     },
-    "_enabled": true,
+    "_enabled": false,
     "__prefab": {
       "__id__": 9
     },
@@ -388,8 +388,8 @@
     "__prefab": {
       "__id__": 17
     },
-    "hp": 10,
-    "currentExp": 10,
+    "hp": 1,
+    "currentExp": 2,
     "isMove": false,
     "_id": ""
   },

@@ -245,7 +245,7 @@
     "node": {
       "__id__": 7
     },
-    "_enabled": true,
+    "_enabled": false,
     "__prefab": {
       "__id__": 9
     },
@@ -388,8 +388,8 @@
     "__prefab": {
       "__id__": 17
     },
-    "hp": 500,
-    "currentExp": 10,
+    "hp": 40,
+    "currentExp": 40,
     "isMove": false,
     "_id": ""
   },

@@ -20,62 +20,40 @@ export class AdvertMgr {
 
     initilize(): void {
         this.adInstance = (window as any)['adInstance'];
-        console.log('ad sdk初始化');
-        console.log(this.adInstance);
+        // console.log('ad sdk初始化');
+        // console.log(this.adInstance);
     }
 
     /** 显示插屏广告*/
     showInterstitial(cb?: () => void): void {
-        if (!this.adInstance) {
-            cb && cb();
-            return;
-        }
+        try {
+            window['showAd']('Interstitial').then(() => {
 
-        this.adInstance.interstitialAd({
-            beforeAd() {
-                console.log('The ad starts playing');
-            },
-            afterAd() {
-                console.log('The ad ends playing');
-            },
-            error(err) {
-                // console.log('The ad failed to load');
-                tgxUITips.show(err)
-            }
-        });
+            }).catch(() => {
+                // GtagMgr.inst.doGameDot(GtagType.ad_error);
+            });
+        } catch (error) {
+            // tgxUITips.show('The ad failed to load')
+        }
     }
 
     /** 显示激励广告*/
     showReawardVideo(cb?: () => void): void {
-        if (!this.adInstance) {
-            cb && cb();
-            return;
-        }
+        try {
+            window["showAd"]('Reward')
+                .then(() => {
+                    if (cb) cb();
+                })
+                .catch(() => {
+                    tgxUITips.show('The ad failed to load');
+                    //上报信息
+                    // GtagMgr.inst.doGameDot(GtagType.ad_error);
+                    // cb && cb();
+                })
+            return
+        } catch (error) {
 
-        this.adInstance.rewardAd({
-            beforeAd() {
-                console.log('The ad starts playing, and the game should pause.');
-                EventDispatcher.instance.emit(ADEvent.REWARD_VIDEO_PLAY);
-                AudioMgr.inst.pause();
-            },
-            adDismissed() {
-                console.log('Player dismissed the ad before completion.');
-                EventDispatcher.instance.emit(ADEvent.REWARD_VIDEO_DISMISSED);
-                AudioMgr.inst.resume();
-            },
-            adViewed() {
-                console.log('Ad was viewed and closed.');
-                if (cb) cb();
-                EventDispatcher.instance.emit(ADEvent.REWARD_VIDEO_CLOSEED);
-                AudioMgr.inst.resume();
-            },
-            error(err: any) {
-                // console.log(`激励广告错误:${err}`);
-                tgxUITips.show(err);
-                EventDispatcher.instance.emit(ADEvent.REWARD_VIDEO_ERROR);
-                AudioMgr.inst.resume();
-                GtagMgr.inst.doGameDot(GtagType.ad_error);
-            }
-        });
+        }
+        tgxUITips.show('The ads failed to load');
     }
 }

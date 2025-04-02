@@ -23,7 +23,10 @@ export class UI_BattleRevive_Impl extends UI_BattleRevive {
             this.changeGameStatus(GameStatus.Playing);
         });
         this.onButtonEvent(layout.btn_back, () => {
-            this.changeGameStatus(GameStatus.None);
+            // this.changeGameStatus(GameStatus.None);
+            GameMgr.inst.isWin = false;
+            GameMgr.inst.setGameStatus(GameStatus.End);
+            this.hide();
         });
     }
 

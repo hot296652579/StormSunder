@@ -3213,7 +3213,7 @@
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
-      "z": -2.593994281596679e-7
+      "z": 0
     },
     "_lrot": {
       "__type__": "cc.Quat",
@@ -3288,15 +3288,15 @@
       "__id__": 244
     },
     "_material": null,
-    "_isTrigger": false,
+    "_isTrigger": true,
     "_center": {
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
       "z": 0
     },
-    "_radius": 1,
-    "_height": 2,
+    "_radius": 15,
+    "_height": 5,
     "_direction": 1,
     "_id": ""
   },
