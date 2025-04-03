@@ -41,7 +41,7 @@ export class Effect2DUIMgr {
 
                 const height = existing.getComponent(UITransform).height * 15;
 
-                console.log('height:', height);
+                // console.log('height:', height);
                 this.setPlayerInfoPosition(existing, target, bloodUI, height);
             }
             return; // 正在加载或已存在

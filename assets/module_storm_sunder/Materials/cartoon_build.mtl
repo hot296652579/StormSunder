@@ -10,7 +10,9 @@
   },
   "_techIdx": 0,
   "_defines": [
-    {},
+    {
+      "USE_OUTLINE_PASS": true
+    },
     {
       "USE_BASE_COLOR_MAP": true,
       "BASE_COLOR_MAP_AS_SHADE_MAP_1": true,
@@ -88,15 +90,7 @@
     }
   ],
   "_props": [
-    {
-      "baseColor": {
-        "__type__": "cc.Color",
-        "r": 255,
-        "g": 255,
-        "b": 255,
-        "a": 255
-      }
-    },
+    {},
     {
       "mainTexture": {
         "__uuid__": "d10a1525-1eef-48e0-89d8-1d5bbef2f5bd@6c48a",

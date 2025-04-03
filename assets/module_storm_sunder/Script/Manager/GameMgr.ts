@@ -4,7 +4,7 @@ import { tgxUIMgr } from "db://assets/core_tgx/tgx";
 import { StormSunderGlobalInstance } from "../StormSunderGlobalInstance";
 import { PropMgr } from "./PropMgr";
 import { TimerMgr } from "./TimerMgr";
-import { UI_BattleGambit, UI_BattleResult, UI_BattleRevive } from "db://assets/scripts/UIDef";
+import { UI_BattleGambit, UI_BattleMatch, UI_BattleResult, UI_BattleRevive } from "db://assets/scripts/UIDef";
 import { PlayerMgr } from "./PlayerMgr";
 import { assetManager, instantiate, Prefab } from "cc";
 import { resLoader } from "db://assets/core_tgx/base/ResLoader";
@@ -41,10 +41,12 @@ export class GameMgr {
     public async updateGameStatusUI() {
         const homeUI = StormSunderGlobalInstance.instance.homeUI;
         const battleUI = StormSunderGlobalInstance.instance.battleUI;
+        const homeMap = StormSunderGlobalInstance.instance.homeMap;
 
         switch (this.gameStatus) {
             case GameStatus.None:
                 homeUI.active = true;
+                homeMap.active = true;
                 battleUI.active = false;
                 MapMgr.Instance.setMapInfo(1);
                 PropMgr.inst.reset();
@@ -52,10 +54,17 @@ export class GameMgr {
                 PlayerMgr.inst.reset();
                 TimerMgr.inst.reset();
                 break;
+            case GameStatus.Match:
+                const match = tgxUIMgr.inst.isShowing(UI_BattleMatch);
+                if (!match) {
+                    tgxUIMgr.inst.showUI(UI_BattleMatch);
+                }
+                break;
             case GameStatus.Gambit:
                 await MapMgr.Instance.addMapNode();
                 await PlayerMgr.inst.setPlayerVisible(true);
                 await PlayerMgr.inst.setPlayerPosition();
+                homeMap.active = false;
                 homeUI.active = false;
                 battleUI.active = true;
 
@@ -70,7 +79,7 @@ export class GameMgr {
                 const revive = tgxUIMgr.inst.isShowing(UI_BattleRevive);
                 if (!revive) {
                     tgxUIMgr.inst.showUI(UI_BattleRevive);
-                    console.log("GameMgr.ts updateGameStatusUI() GameStatus.Revive");
+                    // console.log("GameMgr.ts updateGameStatusUI() GameStatus.Revive");
                 }
                 break;
             case GameStatus.End:
@@ -96,6 +105,8 @@ export enum GameStatus {
     None,
     /** 游戏进行中 */
     Playing,
+    /** 匹配*/
+    Match,
     /** 开局*/
     Gambit,
     /** 复活中*/

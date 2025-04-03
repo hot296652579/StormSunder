@@ -1,4 +1,4 @@
-import { assetManager, instantiate, Prefab, Node, UITransform, Vec3, Vec2, view, game, PhysicsSystem, geometry } from "cc";
+import { assetManager, instantiate, Prefab, Node, UITransform, Vec3, Vec2, view, game, PhysicsSystem, geometry, director } from "cc";
 import { ResLoader, resLoader } from "db://assets/core_tgx/base/ResLoader";
 import { StormSunderGlobalInstance } from "../StormSunderGlobalInstance";
 import { TornadoComponent } from "../Component/TornadoComponent";
@@ -6,6 +6,9 @@ import { TornadoAIComponent } from "../Component/TornadoAIComponent";
 import { AttributeBonusMgr } from "./AttributeBonusMgr";
 import { Tableai_config } from "db://assets/module_basic/table/Tableai_config";
 import { MapMgr } from "./MapMgr";
+import { EasyControllerEvent } from "db://assets/core_tgx/easy_controller/EasyController";
+import { EventDispatcher } from "db://assets/core_tgx/easy_ui_framework/EventDispatcher";
+import { GameEvent } from "../Enum/GameEvent";
 
 const res = [
     "Prefabs/Storm",
@@ -28,7 +31,7 @@ export class PlayerMgr {
     public tornadoNode: Node = null;//玩家节点
     public aiPlayersConfig: Map<number, any> = new Map();//AI玩家配置
     public createAIPlayerCount: number = 1;//创建AI玩家数量
-    public aiConfigCount: number = 3;//AI配置数量
+    public aiConfigCount: number = 15;//AI配置数量
 
     private aiIndex: number = 0;//AI索引
     private pickAiMap: Map<number, Tableai_config> = new Map();//权重随机的AI
@@ -38,7 +41,7 @@ export class PlayerMgr {
         return new Promise(async (resolve, reject) => {
             const mapConfig = MapMgr.Instance.getMapConfig(1);
             this.createAIPlayerCount = mapConfig.count;
-            this.createAIPlayerCount = 3;//测试
+            // this.createAIPlayerCount = 1;//测试
             const aiPoints = StormSunderGlobalInstance.instance.aiPoints;
             for (let i = 0; i < this.createAIPlayerCount; i++) {
                 const infoPrefab = await resLoader.loadAsync(resLoader.gameBundleName, res[0], Prefab);
@@ -139,7 +142,7 @@ export class PlayerMgr {
             this.pickAiMap.set(accumulatedWeight, config);
         }
 
-        console.log(this.pickAiMap);
+        // console.log(this.pickAiMap);
     }
 
     /**
@@ -252,8 +255,13 @@ export class PlayerMgr {
         return ""; // 若无有效名称，返回空字符串
     }
 
-    reset() {
+    async reset() {
         this.destroyOtherAI();
+        let tornado = await this.getTornadoNode();
+        // tornado.scale = new Vec3(1, 1, 1);
+        const sence = director.getScene();
+        sence.emit(EasyControllerEvent.CAMERA_ZOOM, 30);
+        EventDispatcher.instance.emit(GameEvent.EVENT_STORM_RESET);
         this.aiIndex = 0;
     }
 

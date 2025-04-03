@@ -44,8 +44,7 @@ export class RoosterStormSunder extends Component {
     }
 
     private async onClickStart(): Promise<void> {
-        GameUtil.delay(0.2);
-        GameMgr.inst.startGame();
+        GameMgr.inst.setGameStatus(GameStatus.Match);
     }
 
     private onClickSet(): void {

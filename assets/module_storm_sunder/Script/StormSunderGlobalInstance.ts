@@ -21,6 +21,7 @@ export class StormSunderGlobalInstance {
         this.camera = find("MainCamera").getComponent(Camera)!;
         this.gameRoot = find("GameRoot");
         this.map = find("GameRoot/Map");
+        this.homeMap = find("GameRoot/HomeMap");
         this.players = find("GameRoot/Players");
         this.props = find("GameRoot/Props");
         this.aiPoints = find("GameRoot/AIPoints");
@@ -37,6 +38,7 @@ export class StormSunderGlobalInstance {
 
     public camera: Camera = null!; //3d相机
     public map: Node = null!;
+    public homeMap: Node = null!;
     public players: Node = null!;
     public props: Node = null!;
     public aiPoints: Node = null!;

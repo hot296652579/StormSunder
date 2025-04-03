@@ -112,7 +112,7 @@ export class PropComponent extends Component {
         if (isValid(this.node)) {
             const otherCollider = event.otherCollider.node;
             if (otherCollider.name == "RigibodyStorm") {
-                // this.shake();
+                this.shake();
             }
         }
     }
@@ -120,13 +120,13 @@ export class PropComponent extends Component {
     onTriggerExit(event: ITriggerEvent): void {
         Effect2DUIMgr.Instance.removeBlood(this.node);
 
-        // if (!this.isMove) {
-        //     const otherCollider = event.otherCollider.node;
-        //     if (otherCollider.name == "RigibodyStorm") {
-        //         Tween.stopAllByTarget(this.node);
-        //         this.isShaking = false;
-        //     }
-        // }
+        if (!this.isMove) {
+            const otherCollider = event.otherCollider.node;
+            if (otherCollider.name == "RigibodyStorm") {
+                // Tween.stopAllByTarget(this.node);
+                this.isShaking = false;
+            }
+        }
     }
 
     update(deltaTime: number) {
@@ -134,7 +134,7 @@ export class PropComponent extends Component {
     }
 
     protected onDestroy(): void {
-        Tween.stopAllByTarget(this.node);
+        // Tween.stopAllByTarget(this.node);
     }
 }
 

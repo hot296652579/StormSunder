@@ -59,9 +59,9 @@ export class TornadoAIComponent extends TornadoComponent {
         this.currentLv = 1;
         this.playerInfo.level = this.currentLv;
 
-        this.moveDuration = Math.floor(move_time[0] + Math.random() * (move_time[1] - move_time[0] + 1));
-        this.escapeDuration = Math.floor(escape_time[0] + Math.random() * (escape_time[1] - escape_time[0] + 1));
-        this.chaseDuration = Math.floor(pursuit_time[0] + Math.random() * (pursuit_time[1] - pursuit_time[0] + 1));
+        this.moveDuration = Math.floor(Math.random() * (move_time[1] - move_time[0] + 1)) + move_time[0];
+        this.escapeDuration = Math.floor(Math.random() * (escape_time[1] - escape_time[0] + 1)) + escape_time[0];
+        this.chaseDuration = Math.floor(Math.random() * (pursuit_time[1] - pursuit_time[0] + 1)) + pursuit_time[0];
         this.chaseAIProbability = pursuit_1;
         this.chasePlayerProbability = pursuit_2;
 
@@ -74,8 +74,8 @@ export class TornadoAIComponent extends TornadoComponent {
         this.attack = this.attributeBonusMgr.getStormSunderAttack(this.currentLv, true);
         this.speed = this.attributeBonusMgr.getStormSunderSpeed(this.currentLv, true);
         this.speed = Math.round((this.speed / 2) * 100) / 100;
-        // this.speed = this.speed * 0.2;//测试
-        console.log(`AI速度:${this.speed}`);
+        this.speed = this.speed * 1.2;//测试
+        // console.log(`移动时长:${this.moveDuration} 逃离时长:${this.escapeDuration} 追击时长:${this.chaseDuration} 追击AI概率:${this.chaseAIProbability} 追击玩家概率:${this.chasePlayerProbability} 移动概率:${this.moveProbability}`);
     }
 
     /** 选择 AI 行为 */
@@ -151,7 +151,7 @@ export class TornadoAIComponent extends TornadoComponent {
                 const isAI = targetTornado.ai;
                 if (this.currentLv > targetTornado.currentLv && !isAI) {
                     GameMgr.inst.isWin = false;
-                    console.log(`AI 触发碰撞到:${targetTornado.name} isAI:${isAI}`);
+                    // console.log(`AI 触发碰撞到:${targetTornado.name} isAI:${isAI}`);
                     GameMgr.inst.setGameStatus(GameStatus.Revive);
                 }
             }
@@ -177,7 +177,7 @@ export class TornadoAIComponent extends TornadoComponent {
 
             if (targetLv > this.currentLv) {
                 // 目标等级比自己高 → 逃跑
-                this.escapeFrom(targetTornado.node);
+                // this.escapeFrom(targetTornado.node);
             } else if (targetLv < this.currentLv) {
                 // 目标等级比自己低 → 先判断是否追击
                 if (Math.random() * 100 < this.chaseAIProbability) {
@@ -213,7 +213,7 @@ export class TornadoAIComponent extends TornadoComponent {
     /** 追击目标 */
     private chaseTarget(target: Node) {
         if (this.isChasing) return;
-        console.log(`AI 追击目标-> ${target.name}}`);
+        // console.log(`AI 追击目标-> ${target.name}}`);
 
         this.isChasing = true;
         this.targetNode = target;
@@ -227,13 +227,14 @@ export class TornadoAIComponent extends TornadoComponent {
         // 追击时间结束后恢复行为
         this.scheduleOnce(() => {
             this.cancelAction();
+            this.decideAction();
         }, this.chaseDuration);
     }
 
     /** 逃离目标 */
     private escapeFrom(target: Node) {
         this.isEscaping = true;
-        // console.log(`AI 逃离行为->>>>>>>>>>>>>>`);
+        // console.log(`AI 逃离行为 时长:${this.escapeDuration}`);
 
         // 计算最大可逃离距离 = 速度 * 持续时间
         const maxDistance = this.speed * this.escapeDuration;
@@ -247,6 +248,7 @@ export class TornadoAIComponent extends TornadoComponent {
 
         this.scheduleOnce(() => {
             this.cancelAction();
+            this.decideAction();
         }, this.escapeDuration);
     }
 
@@ -257,6 +259,7 @@ export class TornadoAIComponent extends TornadoComponent {
         this.isEscaping = false;
         this.targetNode = null;
         Tween.stopAllByTarget(this.node);
+        // console.log(`AI 行为取消`);
     }
 
     protected onDestroy(): void {

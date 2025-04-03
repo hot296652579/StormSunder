@@ -3,6 +3,8 @@ export class GameEvent {
     static readonly EVENT_UI_INITILIZE = 'EVENT_UI_INITILIZE';
     /** 游戏开始*/
     static readonly EVENT_GAME_START = 'EVENT_GAME_START';
+    /**龙卷风重置*/
+    static readonly EVENT_STORM_RESET = 'EVENT_STORM_RESET';
 
     /** 开局特效*/
     static readonly EVENT_GAME_START_EFFECT = 'EVENT_GAME_START_EFFECT';

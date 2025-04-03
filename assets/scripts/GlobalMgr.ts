@@ -13,7 +13,7 @@ export class GlobalMgr {
 
     //初始化__woso 挂载到window对象上
     public initilize() {
-        window.__woso = {
+        window['__woso'] = {
             SoundMr: {
                 pauseAll: () => {
                     GlobalMgr.instance.pauseAllSounds();
@@ -53,13 +53,11 @@ export class GlobalMgr {
 
     //开启广告
     openAd() {
-        console.log("开启广告");
         AdvertMgr.instance.openAd = true;
     }
 
     //关闭广告
     closeAd() {
-        console.log("关闭广告");
         AdvertMgr.instance.openAd = false;
     }
 
@@ -70,7 +68,7 @@ export class GlobalMgr {
 
     timeTest() {
         setTimeout(() => {
-            window.__woso.SoundMr.pauseAll();
+            window['__woso'].SoundMr.pauseAll();
         }, 2000);
     }
 

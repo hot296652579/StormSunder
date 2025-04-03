@@ -23,7 +23,7 @@ export class PropMoveComponent extends PropComponent {
 
         this.moveSpeed = Math.round((this.moveSpeed / 10) * 100) / 100;
         // 初始化随机移动方向
-        this.randomAngle();
+        // this.randomAngle();
         this.changeDirection();
     }
 
@@ -42,25 +42,21 @@ export class PropMoveComponent extends PropComponent {
 
     //反方向运动 
     private oppositeDirection() {
-        this.currentDirection.multiplyScalar(-1);
+        // 获取当前角度并加180度实现反向
+        const currentAngle = this.node.eulerAngles.y;
+        this.node.setRotationFromEuler(0, currentAngle + 180, 0);
     }
 
     /**
      * 改变移动方向
      */
     private changeDirection() {
-        // 随机生成一个水平方向（x和z轴）
-        const randomX = randomRange(-1, 1);
-        const randomZ = randomRange(-1, 1);
-
-        // 设置新的移动方向并归一化
-        this.currentDirection.set(randomX, 0, randomZ);
-        this.currentDirection.normalize();
-
+        // 随机一个新的旋转角度
+        const newAngle = randomRange(0, 360);
+        // 设置节点的旋转
+        this.node.setRotationFromEuler(0, newAngle, 0);
         // 重置已移动距离
         this.distanceMoved = 0;
-
-        // console.log(`改变移动方向: (${this.currentDirection.x}, ${this.currentDirection.z})`);
     }
 
     update(deltaTime: number) {
@@ -72,11 +68,16 @@ export class PropMoveComponent extends PropComponent {
         // 更新已移动距离
         this.distanceMoved += moveStep;
 
+        // 获取物体的前向方向
+        const forward = new Vec3();
+        Vec3.transformQuat(forward, Vec3.FORWARD, this.node.getWorldRotation());
+        forward.normalize();
+
         // 计算移动向量
         const moveVec = new Vec3(
-            this.currentDirection.x * moveStep,
+            -forward.x * moveStep,
             0,
-            this.currentDirection.z * moveStep
+            forward.z * moveStep
         );
 
         // 更新位置

@@ -17,6 +17,7 @@ export class AdvertMgr {
 
     adInstance: any = null;
     gtag: any = null;
+    openAd: boolean = true;
 
     initilize(): void {
         this.adInstance = (window as any)['adInstance'];

@@ -36,7 +36,7 @@ export class TimerMgr {
             this.countDownTime--;
             if (this.countDownTime <= 0) {
                 this.stopCountdown();
-                console.log("Countdown finished!");
+                // console.log("Countdown finished!");
             }
             this.upateLbTime();
         }, 1000); // 每秒减少一次
@@ -78,6 +78,6 @@ export class TimerMgr {
 
         const mapConfig = MapMgr.Instance.getMapConfig(1);
         this.countDownTime = mapConfig.time;
-        this.countDownTime = 100; //测试
+        // this.countDownTime = 10; //测试
     }
 }
