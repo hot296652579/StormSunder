@@ -74,6 +74,8 @@ export class GameMgr {
                 }
                 break;
             case GameStatus.Playing:
+                await PlayerMgr.inst.setPlayerVisible(true);
+                await PlayerMgr.inst.setPlayerPosition();
                 break;
             case GameStatus.Revive:
                 const revive = tgxUIMgr.inst.isShowing(UI_BattleRevive);

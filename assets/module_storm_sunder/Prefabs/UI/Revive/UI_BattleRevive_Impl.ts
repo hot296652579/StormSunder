@@ -4,6 +4,8 @@ import { UI_BattleRevive } from "../../../../scripts/UIDef";
 import { Layout_BattleRevive } from './Layout_BattleRevive';
 import { GameMgr, GameStatus } from '../../../Script/Manager/GameMgr';
 import { tgxModuleContext } from 'db://assets/core_tgx/tgx';
+import { EventDispatcher } from 'db://assets/core_tgx/easy_ui_framework/EventDispatcher';
+import { GameEvent } from '../../../Script/Enum/GameEvent';
 const { ccclass, property } = _decorator;
 
 @ccclass('UI_BattleRevive_Impl')
@@ -21,6 +23,7 @@ export class UI_BattleRevive_Impl extends UI_BattleRevive {
         let layout = this.layout as Layout_BattleRevive;
         this.onButtonEvent(layout.btn_revive, () => {
             this.changeGameStatus(GameStatus.Playing);
+            EventDispatcher.instance.emit(GameEvent.EVENT_STORM_RESURRECT);
         });
         this.onButtonEvent(layout.btn_back, () => {
             // this.changeGameStatus(GameStatus.None);
