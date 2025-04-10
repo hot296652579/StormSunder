@@ -133,7 +133,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 120,
+      "width": 150,
       "height": 80
     },
     "_anchorPoint": {
@@ -269,7 +269,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 100,
+      "width": 130,
       "height": 30
     },
     "_anchorPoint": {
@@ -308,8 +308,8 @@
     "_string": "爸爸在此",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 18,
-    "_fontSize": 25,
+    "_actualFontSize": 30,
+    "_fontSize": 40,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
     "_overflow": 2,
@@ -431,7 +431,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 39.84,
+      "width": 100,
       "height": 30
     },
     "_anchorPoint": {
@@ -470,8 +470,8 @@
     "_string": "LV.1",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 18,
-    "_fontSize": 25,
+    "_actualFontSize": 30,
+    "_fontSize": 40,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
     "_overflow": 2,

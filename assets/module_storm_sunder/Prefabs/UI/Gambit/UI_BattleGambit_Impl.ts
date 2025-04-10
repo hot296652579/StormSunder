@@ -7,6 +7,8 @@ import { Layout_BattleGambit } from './Layout_BattleGambit';
 import { EventDispatcher } from 'db://assets/core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from '../../../Script/Enum/GameEvent';
 import { TimerMgr } from '../../../Script/Manager/TimerMgr';
+import { GlobalConfig } from 'db://assets/start/Config/GlobalConfig';
+import { AdvertMgr } from 'db://assets/core_tgx/base/ad/AdvertMgr';
 const { ccclass, property } = _decorator;
 
 @ccclass('UI_BattleGambit_Impl')
@@ -23,9 +25,17 @@ export class UI_BattleGambit_Impl extends UI_BattleRevive {
     protected onCreated(): void {
         let layout = this.layout as Layout_BattleGambit;
         this.onButtonEvent(layout.btn_get, () => {
-            this.changeGameStatus(GameStatus.Playing);
-            TimerMgr.inst.startCountdown();
-            EventDispatcher.instance.emit(GameEvent.EVENT_GAME_START_EFFECT);
+            if (!GlobalConfig.isDebug) {
+                AdvertMgr.instance.showReawardVideo(() => {
+                    this.changeGameStatus(GameStatus.Playing);
+                    TimerMgr.inst.startCountdown();
+                    EventDispatcher.instance.emit(GameEvent.EVENT_GAME_START_EFFECT);
+                })
+            } else {
+                this.changeGameStatus(GameStatus.Playing);
+                TimerMgr.inst.startCountdown();
+                EventDispatcher.instance.emit(GameEvent.EVENT_GAME_START_EFFECT);
+            }
         });
         this.onButtonEvent(layout.btn_back, () => {
             GameMgr.inst.isWin = false;

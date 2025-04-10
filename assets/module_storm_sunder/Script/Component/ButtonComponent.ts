@@ -16,7 +16,8 @@ export class ButtonComponent extends Component {
     @property(Button) btSpeed: Button = null!;
     @property(Button) btExp: Button = null!;
 
-    protected onEnable(): void {
+    protected start(): void {
+        this.unregisterUIEvent();
         this.addUIEvent();
         this.updateBtView(BonusType.ATTACK);
         this.updateBtView(BonusType.SPEED);
@@ -24,10 +25,26 @@ export class ButtonComponent extends Component {
         this.onUpdateBtnsStatus();
     }
 
+    private unregisterUIEvent(): void {
+        this.btnAttack.node.off(NodeEventType.TOUCH_END, () => this.onClickHandler(BonusType.ATTACK), this);
+        this.btSpeed.node.off(NodeEventType.TOUCH_END, () => this.onClickHandler(BonusType.SPEED), this);
+        this.btExp.node.off(NodeEventType.TOUCH_END, () => this.onClickHandler(BonusType.EXP), this);
+        EventDispatcher.instance.off(GameEvent.EVENT_REFRESH_MAIN_BTN_LEVEL, this.onUpdateBtnsView, this);
+    }
+
     private addUIEvent(): void {
         this.btnAttack.node.on(NodeEventType.TOUCH_END, () => this.onClickHandler(BonusType.ATTACK), this);
         this.btSpeed.node.on(NodeEventType.TOUCH_END, () => this.onClickHandler(BonusType.SPEED), this);
         this.btExp.node.on(NodeEventType.TOUCH_END, () => this.onClickHandler(BonusType.EXP), this);
+
+        EventDispatcher.instance.on(GameEvent.EVENT_REFRESH_MAIN_BTN_LEVEL, this.onUpdateBtnsView, this);
+    }
+
+    private onUpdateBtnsView(): void {
+        this.updateBtView(BonusType.ATTACK);
+        this.updateBtView(BonusType.SPEED);
+        this.updateBtView(BonusType.EXP);
+        this.onUpdateBtnsStatus();
     }
 
     private onClickHandler(type: BonusType): void {
@@ -42,6 +59,7 @@ export class ButtonComponent extends Component {
                     this.upLevelBonus(type);
                 })
             } else {
+                console.log(`debugg 模式 增加等级!`);
                 this.upLevelBonus(type);
             }
         }
@@ -51,6 +69,7 @@ export class ButtonComponent extends Component {
             return;
         }
 
+        console.log(`提升等级:${type}`);
         this.upLevelBonus(type);
         // console.log(`当前属性最终加成:${AttributeBonusMgr.inst.getBonus(type)}`);
     }

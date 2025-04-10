@@ -39,7 +39,7 @@ export class PropComponent extends Component {
     start() {
         this.status = PropStatus.LIFE;
         this.currentHp = this.hp;
-        this.setExp = 500;
+        // this.setExp = 500;
 
         this.tigger = this.node.getComponent(Collider)!;
         this.tigger.on('onTriggerEnter', this.onTriggerEnter, this);
@@ -48,7 +48,7 @@ export class PropComponent extends Component {
     }
 
     //受伤
-    async hurt(damage: number) {
+    async hurt(damage: number, ai: boolean) {
         if (this.status == PropStatus.DIE) return;
 
         this.currentHp -= damage;
@@ -62,7 +62,10 @@ export class PropComponent extends Component {
 
         //小于0时死亡
         if (this.currentHp <= 0) {
-            StormSunderAudioMgr.playOneShot(StormSunderAudioMgr.getMusicIdName(4), 1.0);
+            if (!ai) {
+                StormSunderAudioMgr.playOneShot(StormSunderAudioMgr.getMusicIdName(4), 1.0);
+            }
+
             this.currentHp = 0;
             this.status = PropStatus.DIE;
             Effect2DUIMgr.Instance.removeBlood(this.node);

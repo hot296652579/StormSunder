@@ -13,6 +13,8 @@ export class PropMoveComponent extends PropComponent {
     @property({ type: CCFloat, displayName: "移动速度" })
     moveSpeed: number = 10;
 
+    _moveDir: Vec3 = new Vec3();
+
     // 当前移动方向
     private currentDirection: Vec3 = new Vec3();
     // 已移动距离
@@ -23,18 +25,16 @@ export class PropMoveComponent extends PropComponent {
 
         this.moveSpeed = Math.round((this.moveSpeed / 10) * 100) / 100;
         // 初始化随机移动方向
-        // this.randomAngle();
         this.changeDirection();
-    }
-
-    //随机角度
-    private randomAngle() {
-        this.node.setRotationFromEuler(0, randomRange(0, 360), 0);
     }
 
     protected override onTriggerEnter(event: ITriggerEvent) {
         // super.onTriggerEnter(event);
 
+        if (event.otherCollider.getGroup() === 1 << 5) {
+            console.log(`碰撞到了边界碰撞器!!!`)
+            return;
+        }
         const otherCollider = event.otherCollider;
         const otherNode = otherCollider.node;
         this.oppositeDirection();
@@ -42,19 +42,31 @@ export class PropMoveComponent extends PropComponent {
 
     //反方向运动 
     private oppositeDirection() {
-        // 获取当前角度并加180度实现反向
-        const currentAngle = this.node.eulerAngles.y;
-        this.node.setRotationFromEuler(0, currentAngle + 180, 0);
+        // 直接反转当前的移动方向
+        this._moveDir.negative();
+
+        // 更新朝向
+        const targetPos = this.node.worldPosition.clone().add(this._moveDir);
+        this.node.lookAt(targetPos);
+
+        // 重置已移动距离
+        this.distanceMoved = 0;
     }
 
     /**
      * 改变移动方向
      */
     private changeDirection() {
-        // 随机一个新的旋转角度
-        const newAngle = randomRange(0, 360);
-        // 设置节点的旋转
-        this.node.setRotationFromEuler(0, newAngle, 0);
+        // 随机生成一个方向（限制在XZ平面上）
+        const angle = randomRange(0, 360);
+        const rad = angle * Math.PI / 180;
+
+        this._moveDir.set(Math.sin(rad), 0, Math.cos(rad));
+        this._moveDir.normalize();
+
+        // 更新朝向
+        const targetPos = this.node.worldPosition.clone().add(this._moveDir);
+        this.node.lookAt(targetPos);
         // 重置已移动距离
         this.distanceMoved = 0;
     }
@@ -62,26 +74,17 @@ export class PropMoveComponent extends PropComponent {
     update(deltaTime: number) {
         if (this.status === PropStatus.DIE) return;
 
-        // 计算当前帧移动距离
-        const moveStep = this.moveSpeed * deltaTime;
-
-        // 更新已移动距离
-        this.distanceMoved += moveStep;
-
         // 获取物体的前向方向
         const forward = new Vec3();
         Vec3.transformQuat(forward, Vec3.FORWARD, this.node.getWorldRotation());
         forward.normalize();
 
         // 计算移动向量
-        const moveVec = new Vec3(
-            -forward.x * moveStep,
-            0,
-            forward.z * moveStep
-        );
+        const moveStep = forward.multiplyScalar(this.moveSpeed * deltaTime);
+        this.node.worldPosition = this.node.worldPosition.add(moveStep);
 
-        // 更新位置
-        this.node.position = this.node.position.add(moveVec);
+        // 更新已移动距离
+        this.distanceMoved += moveStep.length();
 
         // 如果已移动距离超过设定值，改变方向
         if (this.distanceMoved >= this.moveDistance) {

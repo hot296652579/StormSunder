@@ -13,63 +13,79 @@ export class GlobalMgr {
 
     //初始化__woso 挂载到window对象上
     public initilize() {
-        window['__woso'] = {
-            SoundMr: {
+        window["youxi"] = {
+            SoundManager: {
                 pauseAll: () => {
-                    GlobalMgr.instance.pauseAllSounds();
+                    // console.log("暂停游戏所有声音 oh~~~~~~~~~~~");
+                    AudioMgr.inst.toggleBgMusic(false);
+                    AudioMgr.inst.toggleSoundEffects(false);
                 },
                 resumeAll: () => {
-                    GlobalMgr.instance.resumeAllSounds();
+                    // console.log("恢复游戏所有声音 emo~~~~~~~~~~");
+                    AudioMgr.inst.toggleBgMusic(true);
+                    AudioMgr.inst.toggleSoundEffects(true);
+                }
+            },
+            GameManager: {
+                pauseAll: () => {
+                    // console.log(`暂停游戏`);
+                },
+                resumeAll: () => {
+                    // console.log(`开始游戏`);
                 }
             },
             TargetedAds: {
                 open: () => {
-                    GlobalMgr.instance.openAd();
+                    console.log("开启广告");
+                    AdvertMgr.instance.openAd = true;
                 },
                 clos: () => {
-                    GlobalMgr.instance.closeAd();
+                    console.log("关闭广告");
+                    AdvertMgr.instance.openAd = false;
                 }
             },
             Fps: {
                 setfps: (value) => {
-                    GlobalMgr.instance.setfps(value);
+                    // GlobalMgr.instance.setfps(value);
                 }
             }
         };
     }
 
-    // 暂停所有声音
-    pauseAllSounds() {
-        // console.log("暂停游戏所有声音 oh~~~~~~~~~~~");
-        AudioMgr.inst.toggleBgMusic(false);
-        AudioMgr.inst.toggleSoundEffects(false);
-    }
-    // 恢复所有声音
-    resumeAllSounds() {
-        // console.log("恢复游戏所有声音 emo~~~~~~~~~~");
-        AudioMgr.inst.toggleBgMusic(true);
-        AudioMgr.inst.toggleSoundEffects(true);
-    }
+    // // 暂停所有声音
+    // pauseAllSounds() {
+    //     // console.log("暂停游戏所有声音 oh~~~~~~~~~~~");
+    //     AudioMgr.inst.toggleBgMusic(false);
+    //     AudioMgr.inst.toggleSoundEffects(false);
+    // }
+    // // 恢复所有声音
+    // resumeAllSounds() {
+    //     // console.log("恢复游戏所有声音 emo~~~~~~~~~~");
+    //     AudioMgr.inst.toggleBgMusic(true);
+    //     AudioMgr.inst.toggleSoundEffects(true);
+    // }
 
-    //开启广告
-    openAd() {
-        AdvertMgr.instance.openAd = true;
-    }
+    // //开启广告
+    // openAd() {
+    //     console.log("开启广告");
+    //     AdvertMgr.instance.openAd = true;
+    // }
 
-    //关闭广告
-    closeAd() {
-        AdvertMgr.instance.openAd = false;
-    }
+    // //关闭广告
+    // closeAd() {
+    //     console.log("关闭广告");
+    //     AdvertMgr.instance.openAd = false;
+    // }
 
-    //设置帧率
-    setfps(value) {
-        console.log("设置帧率:", value);
-    }
+    // //设置帧率
+    // setfps(value) {
+    //     console.log("设置帧率:", value);
+    // }
 
-    timeTest() {
-        setTimeout(() => {
-            window['__woso'].SoundMr.pauseAll();
-        }, 2000);
-    }
+    // timeTest() {
+    //     setTimeout(() => {
+    //         window.__woso.SoundMr.pauseAll();
+    //     }, 2000);
+    // }
 
 }

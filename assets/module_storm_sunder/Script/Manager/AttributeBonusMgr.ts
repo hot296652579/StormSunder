@@ -101,6 +101,7 @@ export class AttributeBonusMgr {
             const newLv = level + randomOffset;
             finialLevel = newLv < 0 ? 3 : newLv; // 如果计算结果小于 0，则返回 3
         }
+        // console.log(`base:${base},up_value:${up_value},finialLevel:${finialLevel}`)
         return base + (finialLevel - 1) * up_value;
     }
 
@@ -134,8 +135,8 @@ export class AttributeBonusMgr {
 
     /** 经验加成后最终值*/
     public getExpBonus(exp: number, isAI?: boolean): number {
-        const expProgress = Math.floor(this.getBonus(BonusType.EXP, isAI) / 100);
-        return exp * (1 + expProgress);
+        const expProgress = this.getBonus(BonusType.EXP, isAI) / 100;
+        return exp * (1 + parseFloat(expProgress.toString()));
     }
 }
 

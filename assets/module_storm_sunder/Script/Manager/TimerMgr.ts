@@ -24,6 +24,7 @@ export class TimerMgr {
     public countDownTime: number = 1;
     private timerId: number = 0;
     private propMgr: PropMgr;
+    private isPaused: boolean = false;  // 添加暂停标志
 
     constructor() {
         this.propMgr = PropMgr.Instance; // 初始化PropMgr实例
@@ -31,14 +32,19 @@ export class TimerMgr {
 
     // 开始倒计时
     public startCountdown(): void {
+        if (this.isPaused) {
+            this.resumeCountdown();
+            return;
+        }
         this.upateLbTime();
         this.timerId = setInterval(() => {
-            this.countDownTime--;
-            if (this.countDownTime <= 0) {
-                this.stopCountdown();
-                // console.log("Countdown finished!");
+            if (!this.isPaused) {
+                this.countDownTime--;
+                if (this.countDownTime <= 0) {
+                    this.stopCountdown();
+                }
+                this.upateLbTime();
             }
-            this.upateLbTime();
         }, 1000); // 每秒减少一次
 
         Scheduler.enableForTarget(this);
@@ -65,6 +71,23 @@ export class TimerMgr {
         }
     }
 
+    // 暂停倒计时
+    public pauseCountdown(): void {
+        this.isPaused = true;
+        director.getScheduler().pauseTarget(this);
+    }
+
+    // 恢复倒计时
+    public resumeCountdown(): void {
+        this.isPaused = false;
+        director.getScheduler().resumeTarget(this);
+    }
+
+    // 获取暂停状态
+    public isPausedState(): boolean {
+        return this.isPaused;
+    }
+
     // update方法，每帧调用
     public update(dt: number): void {
         this.propMgr.update(dt);
@@ -73,11 +96,12 @@ export class TimerMgr {
     // 销毁时清理
     public reset(): void {
         this.stopCountdown();
+        this.isPaused = false;  // 重置暂停状态
         Scheduler.enableForTarget(this);
         director.getScheduler().unscheduleAllForTarget(this);
 
         const mapConfig = MapMgr.Instance.getMapConfig(1);
         this.countDownTime = mapConfig.time;
-        // this.countDownTime = 10; //测试
+        this.countDownTime = 50; //测试
     }
 }

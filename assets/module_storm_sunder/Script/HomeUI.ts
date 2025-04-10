@@ -42,7 +42,7 @@ export class HomeUI extends Component {
         const idMax: number = 20;
         this.lbUserName.string = PlayerMgr.inst.generateUniqueName(idMax);
         AttributeBonusMgr.inst.userModel.nickName = this.lbUserName.string;
-        console.log('onClickRandom', AttributeBonusMgr.inst.userModel.nickName);
+        // console.log('onClickRandom', AttributeBonusMgr.inst.userModel.nickName);
     }
 
 }

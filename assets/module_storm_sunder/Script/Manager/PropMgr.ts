@@ -6,10 +6,6 @@ import { PlayerMgr } from "./PlayerMgr";
 import { GameMgr, GameStatus } from "./GameMgr";
 
 const propRes = [
-    // "Prefabs/Props/altman",
-    // "Prefabs/Props/aula",
-    // "Prefabs/Props/clown",
-    // "Prefabs/Props/hellFire",
     "Prefabs/Props/cow",
     "Prefabs/Props/sheep",
 ]
@@ -80,6 +76,7 @@ export class PropMgr {
                 let newMonster = instantiate(propPrefab) as any;
                 newMonster.setParent(propsUI);
                 newMonster.setWorldPosition(spawnPos);
+                newMonster.setScale(0.7, 0.7, 0.7);
                 this.curMovePropsCount++;
             }
 
@@ -130,7 +127,7 @@ export class PropMgr {
 
         let x = playerPos.x + Math.cos(angle) * distance;
         let z = playerPos.z + Math.sin(angle) * distance;
-        let y = 0;
+        let y = 1
         return new Vec3(x, y, z);
     }
 

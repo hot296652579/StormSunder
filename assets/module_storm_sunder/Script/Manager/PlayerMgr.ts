@@ -41,7 +41,7 @@ export class PlayerMgr {
         return new Promise(async (resolve, reject) => {
             const mapConfig = MapMgr.Instance.getMapConfig(1);
             this.createAIPlayerCount = mapConfig.count;
-            // this.createAIPlayerCount = 1;//测试
+            // this.createAIPlayerCount = 0;//测试
             const aiPoints = StormSunderGlobalInstance.instance.aiPoints;
             for (let i = 0; i < this.createAIPlayerCount; i++) {
                 const infoPrefab = await resLoader.loadAsync(resLoader.gameBundleName, res[0], Prefab);
@@ -54,6 +54,7 @@ export class PlayerMgr {
                 infoNode.addComponent(TornadoAIComponent);
                 resolve();
             }
+            // resolve();
         })
     }
 
@@ -161,11 +162,6 @@ export class PlayerMgr {
         return config;
     }
 
-    /** 重置AI索引*/
-    public resetAIIndex(): void {
-        this.aiIndex = 0;
-    }
-
     /** 排行榜*/
     public getRanking() {
         const playersUI = StormSunderGlobalInstance.instance.players!;
@@ -255,10 +251,23 @@ export class PlayerMgr {
         return ""; // 若无有效名称，返回空字符串
     }
 
+    //复活玩家 随机位置
+    async revivePlayer() {
+        const player = await this.getTornadoNode();
+        const aiPoints = StormSunderGlobalInstance.instance.aiPoints;
+        let randomIndex = Math.floor(Math.random() * aiPoints.children.length);
+        player.setPosition(aiPoints.children[randomIndex].getWorldPosition());
+    }
+
+    //重置到出生点
+    async resetBornPos() {
+        const player = await this.getTornadoNode();
+        player.setPosition(2, 0, 15);
+    }
+
     async reset() {
         this.destroyOtherAI();
-        let tornado = await this.getTornadoNode();
-        // tornado.scale = new Vec3(1, 1, 1);
+        await this.resetBornPos();
         const sence = director.getScene();
         sence.emit(EasyControllerEvent.CAMERA_ZOOM, 30);
         EventDispatcher.instance.emit(GameEvent.EVENT_STORM_RESET);

@@ -59,12 +59,14 @@ export class UI_BattleResult_Impl extends UI_BattleResult {
         this.rank = PlayerMgr.inst.getPlayerRank();
 
         const totalLevel = Object.values(userModel.bonusData).reduce((sum, bonus) => sum + bonus.level, 0);
+        const rewardBase = userModel.game_base_pass_reward;
         const rewardDevelop = Number((userModel.game_reward_develop / 100).toFixed(2));
         const rewardRank = Number((userModel.game_reward_rank / 100).toFixed(2));
         //最终奖励=[基础奖励×（1+属性提升值×属性养成加成）]×[1-(本局排名-1)×排名减益]
-        this.reward = Math.floor(userModel.game_reward_develop * (1 + totalLevel * rewardDevelop) * (1 - (this.rank - 1) * rewardRank));
-
+        console.log(`基础奖励:${rewardBase} 属性提升值:${totalLevel} 属性养成加成:${rewardDevelop} 本局排名:${this.rank} 排名减益:${rewardRank}`)
+        this.reward = Math.floor(rewardBase * (1 + totalLevel * rewardDevelop) * (1 - (this.rank - 1) * rewardRank));
         this.rewardMultiple = userModel.game_pass_reward_multiple;
+        console.log(`基础奖励:${this.reward} 广告奖励倍数:${this.rewardMultiple}`);
     }
 
     private updateInfoUI(): void {
@@ -91,6 +93,9 @@ export class UI_BattleResult_Impl extends UI_BattleResult {
     }
 
     private changeGameStatus(status: GameStatus): void {
+        if (status === GameStatus.None) {
+            EventDispatcher.instance.emit(GameEvent.EVENT_REFRESH_MAIN_BTN_LEVEL);
+        }
         GameMgr.inst.setGameStatus(status);
         this.node.removeFromParent();
         this.node.destroy();

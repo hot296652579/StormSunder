@@ -21,7 +21,7 @@ export class ThirdPersonCamera extends Component {
     lenMin: number = 10.0;
 
     @property
-    lenMax: number = 100.0; //值越大镜头越远
+    lenMax: number = 500.0; //值越大镜头越远
 
     @property
     len: number = 5;

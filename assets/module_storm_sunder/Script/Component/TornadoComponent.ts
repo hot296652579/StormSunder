@@ -28,6 +28,9 @@ export class TornadoComponent extends Component {
     radiusTigger: CylinderCollider = null!;     //龙卷风半径检测触发器
     particleSystem: ParticleSystem = null!;
 
+    lvlUpParticleSystem: ParticleSystem = null!;
+    killParticleSystem: ParticleSystem = null!;
+
     ai: boolean = false;
     attack: number = 20;
     speed: number = 50;
@@ -58,6 +61,8 @@ export class TornadoComponent extends Component {
 
         this.tornado = this.node.getChildByName('RigibodyStorm')!;
         this.particleSystem = this.node.getChildByName('Main')!.getComponent(ParticleSystem)!;
+        this.lvlUpParticleSystem = this.node.getChildByName('LevelParticle')!.getComponent(ParticleSystem)!;
+        this.killParticleSystem = this.node.getChildByName('KillParticle')!.getComponent(ParticleSystem)!;
         this.rigidBody = this.tornado.getComponent(RigidBody)!;
         this.tigger = this.tornado.getComponent(BoxCollider)!;
         this.radiusTigger = this.node.getChildByName('radiusTigger').getComponent(CylinderCollider)!;
@@ -97,7 +102,7 @@ export class TornadoComponent extends Component {
         this.nickName = userModel.nickName;
         this.height = userModel.game_tornado_base_height;
         this.speed = Math.round((this.speed / 2) * 100) / 100;
-        this.speed = this.speed * 1.8;//测试
+        // this.speed = this.speed * 1.8;//测试
 
         // console.log(`玩家的速度:${this.speed}`);
         this.playerInfo = {
@@ -120,11 +125,33 @@ export class TornadoComponent extends Component {
 
         if (event.otherCollider.getGroup() === 1 << 2) {
             this.setPositionByObstacle(event);
+        } else if (event.otherCollider.getGroup() === 1 << 3) {
+            const targetTornado = otherCollider.node.parent.getComponent(TornadoComponent);
+            if (!targetTornado) return;
+
+            if (event.selfCollider.node.name == 'RigibodyStorm') {
+                if (event.otherCollider.node.name == 'RigibodyStorm') {
+                    if (this.currentLv > targetTornado.currentLv) {
+                        this.killParticleSystem.play();
+                        this.onKilledHandler(targetTornado);
+                    }
+                }
+            }
         }
     }
 
+    protected onKilledHandler(targetTornado: TornadoComponent) {
+        if (!this.ai) {
+            StormSunderAudioMgr.playOneShot(StormSunderAudioMgr.getMusicIdName(5), 1.0);
+        }
+
+        this.curHitObj = targetTornado.node;
+        this.addExpByKill();
+        this.killed(targetTornado.node);
+        Effect2DUIMgr.inst.addPKInfo(this.nickName, targetTornado.nickName);
+    }
+
     protected setPositionByObstacle(event: ITriggerEvent, cb?: Function) {
-        // console.log('离开碰撞物 isColliding:', this.isColliding);
         if (this.isColliding) return; // 防止重复触发
 
         let _originalPosition = this.node.position.clone();
@@ -138,6 +165,7 @@ export class TornadoComponent extends Component {
         // 直接修改坐标
         this.node.setPosition(newPosition);
 
+        // 增加碰撞状态的持续时间，确保有足够时间完成反弹
         setTimeout(() => {
             this.isColliding = false;
             if (cb) cb();
@@ -153,12 +181,12 @@ export class TornadoComponent extends Component {
         // 计算方向向量（从障碍物指向自己）
         const direction = new Vec3(
             selfPos.x - obstaclePos.x,
-            0, // Y轴保持0
+            selfPos.y - obstaclePos.y,
             selfPos.z - obstaclePos.z
         );
 
         // 归一化并乘以反冲距离
-        return direction.normalize().multiplyScalar(7);
+        return direction.normalize().multiplyScalar(1);
     }
 
     protected onTriggerStay(event: ITriggerEvent): void {
@@ -183,7 +211,7 @@ export class TornadoComponent extends Component {
 
                 if (propComponent.status == PropStatus.DIE) return
                 // 造成伤害
-                propComponent.hurt(this.attack);
+                propComponent.hurt(this.attack, this.ai);
 
                 // 检查道具是否被摧毁
                 if (propComponent.currentHp <= 0) {
@@ -214,33 +242,10 @@ export class TornadoComponent extends Component {
                     this.addExpByKill();
                 }
             }
-        } else if (otherCollider.getGroup() == 1 << 3) {
-            const targetTornado = otherCollider.node.parent.getComponent(TornadoComponent);
-            if (!targetTornado) return;
-
-            if (event.selfCollider.node.name == 'RigibodyStorm') {
-                if (event.otherCollider.node.name == 'RigibodyStorm') {
-                    const distance = Vec3.distance(event.selfCollider.node.worldPosition, otherCollider.node.worldPosition);
-
-                    // 增加碰撞检测的容差范围
-                    const collisionThreshold = 3;  // 增加检测范围
-                    if (distance <= collisionThreshold) {
-                        // 添加额外的速度检查，确保不会因为速度太快而错过碰撞
-                        const relativeSpeed = Math.abs(this.speed - targetTornado.speed);
-                        const minSpeedThreshold = 5;  // 最小速度阈值
-
-                        if (relativeSpeed >= minSpeedThreshold || distance <= 1.5) {  // 如果速度差够大或距离非常近
-                            if (this.currentLv > targetTornado.currentLv) {
-                                StormSunderAudioMgr.playOneShot(StormSunderAudioMgr.getMusicIdName(5), 1.0);
-                                this.curHitObj = targetTornado.node;
-                                this.addExpByKill();
-                                this.killed(targetTornado.node);
-                                Effect2DUIMgr.inst.addPKInfo(this.nickName, targetTornado.nickName);
-                            }
-                        }
-                    }
-                }
-            }
+        } else if (otherCollider.getGroup() === 1 << 2) { // 处理障碍物持续碰撞
+            // 如果正在碰撞中，直接返回
+            if (this.isColliding) return;
+            this.setPositionByObstacle(event);
         }
     }
 
@@ -249,7 +254,7 @@ export class TornadoComponent extends Component {
         const targetTornado = targetNode.getComponent(TornadoComponent);
         if (targetTornado && !targetTornado.ai) {
             // 如果是玩家被击杀，只隐藏节点
-            targetNode.active = false;
+            // targetNode.active = false;
         } else {
             // 如果是AI被击杀，移除并销毁节点
             targetNode.removeFromParent();
@@ -282,7 +287,12 @@ export class TornadoComponent extends Component {
     }
 
     onMoveHandler(): void {
-        if (this.isColliding || this.ai) return;
+        // 如果正在碰撞中，完全阻止移动
+        if (this.isColliding) {
+            return;
+        }
+
+        if (this.ai) return;
 
         const playerDir = UIJoyStick.ins.dir;
         const playerX = playerDir.x * this.speed * game.deltaTime;
@@ -303,11 +313,10 @@ export class TornadoComponent extends Component {
             objExp = AttributeBonusMgr.inst.getStormSunderExp(lv);
         }
 
-        objExp = AttributeBonusMgr.inst.getStormSunderExp(objExp);
-        const finialExp = AttributeBonusMgr.inst.getExpBonus(objExp, isAI);
-        this.currentExp += finialExp;
-        this.height += finialExp * AttributeBonusMgr.inst.userModel.game_exp_height;
-        Effect2DUIMgr.inst.addExpProp(this.node, finialExp);
+        const finialExp = AttributeBonusMgr.inst.getExpBonus(objExp, isAI).toFixed(1);
+        this.currentExp += Number(finialExp)
+        this.height += Math.floor(Number(finialExp) * AttributeBonusMgr.inst.userModel.game_exp_height);
+        Effect2DUIMgr.inst.addExpProp(this.node, Number(finialExp));
 
         if (this.currentExp >= this.nextExp) {
             this.currentLv++;
@@ -325,12 +334,13 @@ export class TornadoComponent extends Component {
     }
 
     private stormLevelUp() {
+        this.lvlUpParticleSystem.play();
         const attributeBonusMgr = AttributeBonusMgr.inst;
         this.nextExp = attributeBonusMgr.getExpNeed(this.currentLv + 1);
         this.attack = attributeBonusMgr.getStormSunderAttack(this.currentLv);
         this.speed = attributeBonusMgr.getStormSunderSpeed(this.currentLv);
         this.speed = Math.round((this.speed / 2) * 100) / 100;
-        this.speed = this.speed * 1.8;//测试
+        // this.speed = this.speed * 1.8;//测试
         this.currentExp = 0;
 
         Effect2DUIMgr.inst.addLevelUp(this.node);
@@ -340,18 +350,20 @@ export class TornadoComponent extends Component {
         if (!this.particleSystem) return;
         this.particleSystem.startSizeX.constantMax = 1;
         this.particleSystem.startLifetime.constantMax = 0.6;
+        this.currentLv = 1;
+        this.tigger.size = new Vec3(1.3, 2.5, 1.4);
     }
+
     //变大体积
     private grow() {
         //体积=基础体积×（1+等级×百分比）
         const baseSize = 1;
         const growMultiple = AttributeBonusMgr.inst.userModel.game_lv_modleVolume_up; //升级体积 百分比系数
-        const percentage = growMultiple / 100;
-        const growSize = baseSize + (1 + this.currentLv * percentage);
+        const percentage = (growMultiple / 100).toFixed(1);
+        const growSize = baseSize + (1 + this.currentLv * Number(percentage));
         // this.node.setScale(growSize, growSize, growSize);
         this.particleSystem.startSizeX.constantMax += 1;
         this.particleSystem.startLifetime.constantMax += 0.2;
-
         this.onGambitEffect();
         // console.log('growSize:', growSize);
         this.updateCameraView();
@@ -360,15 +372,25 @@ export class TornadoComponent extends Component {
     //刚体扩大特效
     private onGambitEffect() {
         const multiple: number = AttributeBonusMgr.inst.userModel.game_tornado_damage;
-        const scaleFactor = multiple / 100;
+        const scaleFactor = Number((multiple / 100).toFixed(1));
         const size = this.tigger.size;
-        this.tigger.size = new Vec3(size.x + size.x * scaleFactor, size.y + size.y * scaleFactor, size.z + size.z * scaleFactor);
-        // console.log(`龙卷风碰撞 开局特效启动 最新size:${this.tigger.size}}`);
+
+        let sizeX = size.x + size.x * scaleFactor;
+        if (sizeX >= 25) sizeX = 25;
+        let sizeY = size.y + size.y * scaleFactor;
+        if (sizeY >= 65) sizeY = 65;
+        let sizeZ = size.z + size.z * scaleFactor;
+        if (sizeZ >= 25) sizeZ = 25;
+
+        this.tigger.size = new Vec3(sizeX, sizeY, sizeZ);
+        console.log('tigger size:', this.tigger.size, 'scaleFactor:', scaleFactor);
     }
 
     private updateCameraView() {
+        if (this.ai) return;
         const sence = director.getScene();
         const view = 30 + this.currentLv * 2;
+        // console.log(`视野范围:${view}`);
         sence.emit(EasyControllerEvent.CAMERA_ZOOM, view);
     }
 

@@ -2,6 +2,9 @@ import { Button, Component, Label, Node, NodeEventType, _decorator, find, view }
 import { AttributeBonusMgr } from './Manager/AttributeBonusMgr';
 import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from './Enum/GameEvent';
+
+
+
 import { GameUtil } from './GameUtil';
 import { PlayerMgr } from './Manager/PlayerMgr';
 import { Tween, Vec3 } from 'cc';
@@ -30,13 +33,13 @@ export class PkPropUI extends Component {
     //动画 从舞台左入场到中间 停顿0.5s后从中间到舞台右出场
     playPkPropAnimation() {
         // Reset initial position to left of screen
-        this.node.setPosition(-view.getVisibleSize().width - 100, 0);
+        this.node.setPosition(-view.getVisibleSize().width - 100, 100, 0);
 
         // Create animation sequence using tween
         const tween = new Tween(this.node)
-            .to(0.5, { position: new Vec3(0, 0, 0) }) // Move to center
+            .to(0.5, { position: new Vec3(0, 100, 0) }) // Move to center
             .delay(1) // Pause for 0.5 seconds
-            .to(0.5, { position: new Vec3(view.getVisibleSize().width + 100, 0, 0) }) // Move to right
+            .to(0.5, { position: new Vec3(view.getVisibleSize().width + 100, 100, 0) }) // Move to right
             .start();
     }
 

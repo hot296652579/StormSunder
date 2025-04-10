@@ -83,7 +83,7 @@ export class Effect2DUIMgr {
         if (this.playerInfoMap.has(target)) {
             const existing = this.playerInfoMap.get(target);
             if (existing instanceof Node) {
-                this.setPlayerInfoPosition(existing, target, effectUI);
+                this.setPlayerInfoPosition(existing, target, effectUI, -100);
             }
             return; // 正在加载或已存在
         }

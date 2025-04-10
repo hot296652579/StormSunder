@@ -4,12 +4,16 @@ import { UI_BattleMatch, UI_BattleRevive } from "../../../../scripts/UIDef";
 import { GameMgr, GameStatus } from '../../../Script/Manager/GameMgr';
 import { tgxModuleContext } from 'db://assets/core_tgx/tgx';
 import { Layout_BattleMatch } from './Layout_BattleMatch';
+import { MapMgr } from '../../../Script/Manager/MapMgr';
+import { EventDispatcher } from 'db://assets/core_tgx/easy_ui_framework/EventDispatcher';
+import { GameEvent } from '../../../Script/Enum/GameEvent';
+import { GameUtil } from '../../../Script/GameUtil';
 const { ccclass, property } = _decorator;
 
 @ccclass('UI_BattleMatch_Impl')
 export class UI_BattleMatch_Impl extends UI_BattleRevive {
     animationDuration: number = 1.0; // 动画总时长
-    private baseText: string = "Loading";
+    private baseText: string = "Matching";
     private animationTween: Tween<any> = null;
     private matchText: Label = null;
     constructor() {
@@ -21,11 +25,17 @@ export class UI_BattleMatch_Impl extends UI_BattleRevive {
     }
 
     protected onCreated(): void {
+        this.registerEvent();
         let layout = this.layout as Layout_BattleMatch;
         let match = layout.btn_match.node.getChildByName('Label').getComponent(Label);
         this.matchText = match;
         this.matchText.string = this.baseText;
         this.startTextAnimation();
+        MapMgr.Instance.addMapNode();
+    }
+
+    private registerEvent() {
+        EventDispatcher.instance.on(GameEvent.EVENT_MAP_LOAD_COMPLETE, this.onAnimationComplete, this);
     }
 
     startTextAnimation() {
@@ -60,7 +70,7 @@ export class UI_BattleMatch_Impl extends UI_BattleRevive {
             )
             .call(() => {
                 // 1秒后执行完成回调
-                this.onAnimationComplete();
+                // this.onAnimationComplete();
             })
             .union() // 合并前面的sequence
             .repeatForever() // 循环播放
@@ -74,10 +84,16 @@ export class UI_BattleMatch_Impl extends UI_BattleRevive {
         }
     }
 
-    private onAnimationComplete() {
+    private async onAnimationComplete() {
+        await GameUtil.delay(1);
+        this.unregisterEvent();
         this.stopAnimation();
         this.hide();
         GameMgr.inst.startGame();
+    }
+
+    private unregisterEvent() {
+        EventDispatcher.instance.off(GameEvent.EVENT_MAP_LOAD_COMPLETE, this.onAnimationComplete, this);
     }
 }
 

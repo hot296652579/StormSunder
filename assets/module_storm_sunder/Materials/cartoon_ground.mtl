@@ -92,6 +92,13 @@
   "_props": [
     {},
     {
+      "specular": {
+        "__type__": "cc.Color",
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 76
+      },
       "mainTexture": {
         "__uuid__": "d10a1525-1eef-48e0-89d8-1d5bbef2f5bd@6c48a",
         "__expectedType__": "cc.Texture2D"

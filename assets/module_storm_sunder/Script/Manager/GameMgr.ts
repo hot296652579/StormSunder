@@ -10,6 +10,7 @@ import { assetManager, instantiate, Prefab } from "cc";
 import { resLoader } from "db://assets/core_tgx/base/ResLoader";
 import { Effect2DUIMgr } from "./Effect2DUIMgr";
 import { MapMgr } from "./MapMgr";
+import { GameUtil } from "../GameUtil";
 
 export class GameMgr {
     private static _instance: GameMgr;
@@ -61,7 +62,7 @@ export class GameMgr {
                 }
                 break;
             case GameStatus.Gambit:
-                await MapMgr.Instance.addMapNode();
+                // await MapMgr.Instance.addMapNode();
                 await PlayerMgr.inst.setPlayerVisible(true);
                 await PlayerMgr.inst.setPlayerPosition();
                 homeMap.active = false;
@@ -74,8 +75,7 @@ export class GameMgr {
                 }
                 break;
             case GameStatus.Playing:
-                await PlayerMgr.inst.setPlayerVisible(true);
-                await PlayerMgr.inst.setPlayerPosition();
+
                 break;
             case GameStatus.Revive:
                 const revive = tgxUIMgr.inst.isShowing(UI_BattleRevive);
@@ -83,6 +83,11 @@ export class GameMgr {
                     tgxUIMgr.inst.showUI(UI_BattleRevive);
                     // console.log("GameMgr.ts updateGameStatusUI() GameStatus.Revive");
                 }
+                break;
+            case GameStatus.Continue:
+                await PlayerMgr.inst.revivePlayer();
+                await GameUtil.delay(0.1);
+                this.setGameStatus(GameStatus.Playing);
                 break;
             case GameStatus.End:
                 tgxUIMgr.inst.showUI(UI_BattleResult);
@@ -113,6 +118,8 @@ export enum GameStatus {
     Gambit,
     /** 复活中*/
     Revive,
+    /** 继续游戏*/
+    Continue,
     /** 游戏结束 */
     End,
 }

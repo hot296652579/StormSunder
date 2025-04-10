@@ -1,10 +1,13 @@
 export class GameEvent {
-    /** 通知UI实例化*/
-    static readonly EVENT_UI_INITILIZE = 'EVENT_UI_INITILIZE';
+    /** 地图加载完成*/
+    static readonly EVENT_MAP_LOAD_COMPLETE = 'EVENT_MAP_LOAD_COMPLETE';
     /** 游戏开始*/
     static readonly EVENT_GAME_START = 'EVENT_GAME_START';
     /**龙卷风重置*/
     static readonly EVENT_STORM_RESET = 'EVENT_STORM_RESET';
+
+    /**刷新主界面按钮等级*/
+    static readonly EVENT_REFRESH_MAIN_BTN_LEVEL = 'EVENT_REFRESH_MAIN_BTN_LEVEL';
 
     /** 龙卷风复活*/
     static readonly EVENT_STORM_RESURRECT = 'EVENT_STORM_RESURRECT';

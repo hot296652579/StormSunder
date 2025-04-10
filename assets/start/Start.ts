@@ -17,14 +17,12 @@ const _preloadRes = [
     { bundle: ModuleDef.BASIC, url: 'ui_alert/UI_Alert', type: 'prefab' },
     { bundle: ModuleDef.BASIC, url: 'ui_tips/UI_Tips', type: 'prefab' },
     { bundle: ModuleDef.BASIC, url: 'ui_waiting/UI_Waiting', type: 'prefab' },
-    { bundle: ModuleDef.MODULE_STORM_SUNDER, url: 'Prefabs/Map1', type: 'prefab' },
     { bundle: ModuleDef.MODULE_STORM_SUNDER, url: 'Prefabs/Blood', type: 'prefab' },
     { bundle: ModuleDef.MODULE_STORM_SUNDER, url: 'Prefabs/PlayerInfo', type: 'prefab' },
     { bundle: ModuleDef.MODULE_STORM_SUNDER, url: 'Prefabs/ExpProp', type: 'prefab' },
     { bundle: ModuleDef.MODULE_STORM_SUNDER, url: 'Prefabs/LevelUp', type: 'prefab' },
     { bundle: ModuleDef.MODULE_STORM_SUNDER, url: 'Prefabs/PkProp', type: 'prefab' },
-    { bundle: ModuleDef.MODULE_STORM_SUNDER, url: 'Audio/bgm_1.mp3', type: 'audio' },
-    { bundle: ModuleDef.MODULE_STORM_SUNDER, url: 'Audio/bgm_2.mp3', type: 'audio' },
+    { bundle: ModuleDef.MODULE_STORM_SUNDER, url: 'Audio/bgm.mp3', type: 'audio' },
     { bundle: ModuleDef.MODULE_STORM_SUNDER, url: 'Audio/dianji.mp3', type: 'audio' },
     { bundle: ModuleDef.MODULE_STORM_SUNDER, url: 'Audio/luosi.mp3', type: 'audio' },
     { bundle: ModuleDef.MODULE_STORM_SUNDER, url: 'Audio/shengli.mp3', type: 'audio' },
@@ -63,6 +61,7 @@ export class Start extends Component {
         } catch (error) {
 
         }
+
         if (!GlobalConfig.isDebug) {
             AdvertMgr.instance.showInterstitial();
         }

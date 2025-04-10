@@ -52,12 +52,13 @@ export class TornadoAIComponent extends TornadoComponent {
     private initAIPlayer() {
         const aiConfig = PlayerMgr.inst.getRandomAIConfig();
         // console.log(aiConfig.data);
+        if (!aiConfig || !aiConfig.data) return;
         //text:名称 range:检测半径 move_juge:移动概率 move_time:移动时间 escape_time:逃跑时间 pursuit_1:追击玩家概率 pursuit_2:追击AI概率 pursuit_time:追击时间
         const { ange, move_judge, move_time, escape_time, pursuit_1, pursuit_2, pursuit_time } = aiConfig.data;
         let text = PlayerMgr.inst.generateUniqueName(20);
         this.playerInfo.nickName = text;
         this.nickName = text;
-        this.currentLv = 11;
+        this.currentLv = 1;
         this.playerInfo.level = this.currentLv;
 
         this.moveDuration = Math.floor(Math.random() * (move_time[1] - move_time[0] + 1)) + move_time[0];
@@ -75,7 +76,7 @@ export class TornadoAIComponent extends TornadoComponent {
         this.attack = this.attributeBonusMgr.getStormSunderAttack(this.currentLv, true);
         this.speed = this.attributeBonusMgr.getStormSunderSpeed(this.currentLv, true);
         this.speed = Math.round((this.speed / 2) * 100) / 100;
-        this.speed = this.speed * 1.2;//测试
+        // this.speed = this.speed * 1.2;//测试
         // console.log(`移动时长:${this.moveDuration} 逃离时长:${this.escapeDuration} 追击时长:${this.chaseDuration} 追击AI概率:${this.chaseAIProbability} 追击玩家概率:${this.chasePlayerProbability} 移动概率:${this.moveProbability}`);
     }
 
@@ -124,62 +125,73 @@ export class TornadoAIComponent extends TornadoComponent {
         }, this.moveDuration);
     }
 
-    protected override onTriggerEnter(event: ITriggerEvent): void {
+    protected onTriggerEnter(event: ITriggerEvent): void {
         if (event.otherCollider.getGroup() === 1 << 2) {
-            this.unscheduleAllCallbacks();
-            this.isChasing = false;
-            this.isEscaping = false;
-            this.targetNode = null;
-            Tween.stopAllByTarget(this.node);
-
+            this.cancelAction();
             this.setPositionByObstacle(event, () => {
                 this.decideAction();
             });
         }
+        else if (event.otherCollider.getGroup() === 1 << 3) {
+            if (event.otherCollider.node.name == 'radiusTigger') return;
+
+            const otherCollider = event.otherCollider;
+            const targetTornado = otherCollider.node.parent.getComponent(TornadoComponent);
+            if (!targetTornado) return;
+
+            if (event.selfCollider.node.name == 'RigibodyStorm') {
+                if (event.otherCollider.node.name == 'RigibodyStorm') {
+                    const isAI = targetTornado.ai;
+                    if (this.currentLv > targetTornado.currentLv) {
+                        if (!isAI) {
+                            GameMgr.inst.isWin = false;
+                            GameMgr.inst.setGameStatus(GameStatus.Revive);
+                        } else {
+                            this.killParticleSystem.play();
+                            this.onKilledHandler(targetTornado);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    protected onKilledHandler(targetTornado: TornadoComponent): void {
+        super.onKilledHandler(targetTornado);
     }
 
     protected onTriggerStay(event: ITriggerEvent): void {
         if (GameMgr.inst.getGameStatus() != GameStatus.Playing) return;
         super.onTriggerStay(event);
 
-        const otherCollider = event.otherCollider;
-        if (event.otherCollider.getGroup() === 1 << 3) {
-            const targetTornado = otherCollider.node.parent.getComponent(TornadoComponent);
-            if (!targetTornado) return;
+        // const otherCollider = event.otherCollider;
+        // if (event.otherCollider.getGroup() === 1 << 3) {
+        //     const targetTornado = otherCollider.node.parent.getComponent(TornadoComponent);
+        //     if (!targetTornado) return;
 
-            // const distance = Vec3.distance(this.node.worldPosition, otherCollider.node.worldPosition);
-            // if (distance < 0.2) {
-            //     const isAI = targetTornado.ai;
-            //     if (this.currentLv > targetTornado.currentLv && !isAI) {
-            //         GameMgr.inst.isWin = false;
-            //         // console.log(`AI 触发碰撞到:${targetTornado.name} isAI:${isAI}`);
-            //         GameMgr.inst.setGameStatus(GameStatus.Revive);
-            //     }
-            // }
+        //     if (event.selfCollider.node.name == 'RigibodyStorm') {
+        //         if (event.otherCollider.node.name == 'RigibodyStorm') {
+        //             const distance = Vec3.distance(event.selfCollider.node.worldPosition, otherCollider.node.worldPosition);
 
-            if (event.selfCollider.node.name == 'RigibodyStorm') {
-                if (event.otherCollider.node.name == 'RigibodyStorm') {
-                    const distance = Vec3.distance(event.selfCollider.node.worldPosition, otherCollider.node.worldPosition);
+        //             // 增加碰撞检测的容差范围
+        //             const collisionThreshold = 3;  // 增加检测范围
+        //             if (distance <= collisionThreshold) {
+        //                 // 添加额外的速度检查，确保不会因为速度太快而错过碰撞
+        //                 const relativeSpeed = Math.abs(this.speed - targetTornado.speed);
+        //                 const minSpeedThreshold = 5;  // 最小速度阈值
 
-                    // 增加碰撞检测的容差范围
-                    const collisionThreshold = 3;  // 增加检测范围
-                    if (distance <= collisionThreshold) {
-                        // 添加额外的速度检查，确保不会因为速度太快而错过碰撞
-                        const relativeSpeed = Math.abs(this.speed - targetTornado.speed);
-                        const minSpeedThreshold = 5;  // 最小速度阈值
-
-                        if (relativeSpeed >= minSpeedThreshold || distance <= 1.5) {  // 如果速度差够大或距离非常近
-                            const isAI = targetTornado.ai;
-                            if (this.currentLv > targetTornado.currentLv && !isAI) {
-                                GameMgr.inst.isWin = false;
-                                console.log(`AI 击杀玩家!!!`);
-                                GameMgr.inst.setGameStatus(GameStatus.Revive);
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        //                 if (relativeSpeed >= minSpeedThreshold || distance <= 1.5) {  // 如果速度差够大或距离非常近
+        //                     const isAI = targetTornado.ai;
+        //                     if (this.currentLv > targetTornado.currentLv && !isAI) {
+        //                         console.log(`AI 击杀玩家!!!`);
+        //                         GameMgr.inst.isWin = false;
+        //                         GameMgr.inst.setGameStatus(GameStatus.Revive);
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
     }
 
     protected addExpByKill() {
@@ -237,7 +249,7 @@ export class TornadoAIComponent extends TornadoComponent {
     /** 追击目标 */
     private chaseTarget(target: Node) {
         if (this.isChasing) return;
-        console.log(`AI 追击目标-> ${target.name}}`);
+        // console.log(`AI 追击目标-> ${target.name}}`);
 
         this.isChasing = true;
         this.targetNode = target;
@@ -277,7 +289,7 @@ export class TornadoAIComponent extends TornadoComponent {
     }
 
     private stormResurrect() {
-        console.log(`玩家复活 AI取消行为 重新选择行为!`)
+        // console.log(`玩家复活 AI取消行为 重新选择行为!`);
         this.cancelAction();
         this.decideAction();
     }
@@ -297,6 +309,7 @@ export class TornadoAIComponent extends TornadoComponent {
         this.cancelAction();
         EventDispatcher.instance.off(GameEvent.EVENT_GAME_START, this.decideAction, this);
         EventDispatcher.instance.off(GameEvent.EVENT_GAME_START_EFFECT, this.decideAction, this);
+        EventDispatcher.instance.off(GameEvent.EVENT_STORM_RESURRECT, this.stormResurrect, this);
     }
 
 }

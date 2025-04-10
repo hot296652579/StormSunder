@@ -1,7 +1,5 @@
 import { _decorator, Node, Prefab, instantiate, Component, Camera, UITransform, v3, game, view, screen, tween, Vec3 } from 'cc';
-import { EventDispatcher } from '../../easy_ui_framework/EventDispatcher';
-import { ADEvent } from './ADEvent';
-import { AudioMgr } from '../AudioMgr';
+
 import { tgxUITips } from 'db://assets/core_tgx/tgx';
 import { GtagMgr, GtagType } from 'db://assets/core_tgx/base/GtagMgr';
 const { ccclass, property } = _decorator;
@@ -27,8 +25,9 @@ export class AdvertMgr {
 
     /** 显示插屏广告*/
     showInterstitial(cb?: () => void): void {
+
         try {
-            window['showAd']('Interstitial').then(() => {
+            window['showAd']('interstitial').then(() => {
 
             }).catch(() => {
                 // GtagMgr.inst.doGameDot(GtagType.ad_error);
@@ -40,8 +39,9 @@ export class AdvertMgr {
 
     /** 显示激励广告*/
     showReawardVideo(cb?: () => void): void {
+
         try {
-            window["showAd"]('Reward')
+            window["showAd"]('rewarded')
                 .then(() => {
                     if (cb) cb();
                 })

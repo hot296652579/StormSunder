@@ -214,6 +214,7 @@ export class GameUtil {
 
     /** 3D空间坐标转屏幕坐标*/
     static worldToScreenLocal(target: Node, localNode: Node): Vec3 {
+        if (!target || !target.worldPosition) return;
         const targetWorldPos = target.worldPosition.clone();
         const mainCamera = StormSunderGlobalInstance.instance.camera;
         const screenPos = mainCamera.worldToScreen(targetWorldPos);
